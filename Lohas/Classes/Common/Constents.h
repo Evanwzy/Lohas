@@ -12,3 +12,5 @@
 
 //Url Address
 #define RegisterUrl [NSString stringWithFormat:@"%@/ApiLogin/register", SERVER_URL]
+#define CheckAccountUrl [NSString stringWithFormat:@"%@/ApiLogin/sendSHP", SERVER_URL]
+#define LoginUrl [NSString stringWithFormat:@"%@/ApiLogin/login", SERVER_URL]

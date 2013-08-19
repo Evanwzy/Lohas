@@ -20,4 +20,7 @@
 
 - (IBAction)cityBtnPressed:(id)sender;
 - (IBAction)myLohasBtnPressed:(id)sender;
+- (IBAction)joinBtnPressed:(id)sender;
+
+
 @end

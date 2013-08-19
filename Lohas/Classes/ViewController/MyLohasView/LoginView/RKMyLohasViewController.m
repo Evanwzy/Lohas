@@ -32,6 +32,11 @@
     [self setupUI];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
+    [keyBoardController addToolbarToKeyboard];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -54,14 +59,16 @@
 
 #pragma mark - UI Setting
 - (void)setupUI {
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"IsLogined"]) {
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"IsLogined"] isEqualToString:@"1"]) {
         NSDictionary *userInfo = [[NSUserDefaults standardUserDefaults] valueForKey:@"UserInfo"];
         if (IS_IPHONE_5) {
             self.nameLabel_ip5.text = [userInfo objectForKey:@"name"];
+            [self.view_ip5 removeFromSuperview];
             [self.view addSubview:self.loginedView_ip5];
         } else {
             
             self.nameLabel_ip4.text = [userInfo objectForKey:@"name"];
+            [self.view_ip5 removeFromSuperview];
             [self.view addSubview:self.loginedView_ip4];
         }
     }else {
@@ -76,6 +83,29 @@
 #pragma mark - button Action
 
 - (IBAction)LoginBtnPressed:(id)sender {
+    [self loginRequest];
+    
+}
+
+- (IBAction)RegisterBtnPressed:(id)sender {
+    RKRegisterViewController *rvCtr =[[RKRegisterViewController alloc]init];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:rvCtr];
+}
+
+- (IBAction)ForgetBtnPressed:(id)sender {
+}
+
+- (IBAction)backBtnPressed:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"POPCONTROLLER" object:nil];
+}
+
+- (IBAction)loginOutBtn:(id)sender {
+}
+
+
+
+#pragma mark - NetWorking Request
+- (void)loginRequest {
     RKNetWorkingManager *manager =[RKNetWorkingManager sharedManager];
     manager.loginDelagate =self;
     NSString *accountStr;
@@ -99,21 +129,19 @@
         }
     }
     [manager loginWithAccount:accountStr AndPwd:pwdStr];
+}
+
+- (void)getLoginResult {
+    [self setupUI];
+}
+
+
+#pragma mark - UIKeyboardViewController delegate methods
+- (void)alttextFieldDidEndEditing:(UITextField *)textField {
     
 }
 
-- (IBAction)RegisterBtnPressed:(id)sender {
-    RKRegisterViewController *rvCtr =[[RKRegisterViewController alloc]init];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:rvCtr];
-}
-
-- (IBAction)ForgetBtnPressed:(id)sender {
-}
-
-- (IBAction)backBtnPressed:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"POPCONTROLLER" object:nil];
-}
-
-- (IBAction)loginOutBtn:(id)sender {
+-(void)alttextFieldDidBeginEditing:(UITextField *)textField {
+    
 }
 @end

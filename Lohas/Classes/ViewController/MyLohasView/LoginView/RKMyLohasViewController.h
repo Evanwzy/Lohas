@@ -25,7 +25,7 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIView *view_ip5;
 @property (strong, nonatomic) IBOutlet UIView *view_ip4;
 @property (strong, nonatomic) IBOutlet UIView *loginedView_ip5;
-@property (weak, nonatomic) IBOutlet UIButton *loginedView_ip4;
+@property (strong, nonatomic) IBOutlet UIView *loginedView_ip4;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel_ip4;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel_ip5;

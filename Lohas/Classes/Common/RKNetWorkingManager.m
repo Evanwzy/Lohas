@@ -34,7 +34,7 @@ static RKNetWorkingManager *_networkRequestManager;
 #pragma mark - NetWorkingRequest
 
 //User Register
-- (void)registerWithAccount:(NSString *)accountStr AndPwd:(NSString *)pwdStr AndName:(NSString *)nameStr {
+- (void)registerWithAccount:(NSString *)accountStr AndPwd:(NSString *)pwdStr AndName:(NSString *)nameStr AndVerify:(NSString *)verifyStr {
     [self checkQueue];
     
     NSURL *url =[NSURL URLWithString:RegisterUrl];
@@ -43,6 +43,7 @@ static RKNetWorkingManager *_networkRequestManager;
     [request addPostValue:accountStr forKey:@"account"];
     [request addPostValue:pwdStr forKey:@"password"];
     [request addPostValue:nameStr forKey:@"name"];
+    [request addPostValue:verifyStr forKey:@"verify"];
     [request setDelegate:self];
     [request setDidFinishSelector:@selector(registerFinished:)];
     [request setDidFailSelector:@selector(commonRequestQueryDataFailed:)];
@@ -62,11 +63,37 @@ static RKNetWorkingManager *_networkRequestManager;
     }
 }
 
+//Check Account
+- (void)checkWithAccount:(NSString *)accountStr {
+    [self checkQueue];
+    
+    NSURL *url =[NSURL URLWithString:CheckAccountUrl];
+    
+    ASIFormDataRequest *request =[ASIFormDataRequest requestWithURL:url];
+    [request addPostValue:accountStr forKey:@"telephone"];
+    [request setDelegate:self];
+    [request setDidFinishSelector:@selector(checkAccountFinished:)];
+    [request setDidFailSelector:@selector(commonRequestQueryDataFailed:)];
+    
+    request.timeOutSeconds=10;
+    
+    [queue addOperation:request];
+}
+
+- (void)checkAccountFinished :(ASIHTTPRequest *)request {
+    NSLog(@"%@", [request responseString]);
+    NSDictionary *data =[[request responseString] JSONValue];
+    if ([[data objectForKey:@"status"] isEqual:@"0"]) {
+    } else {
+        [Common showNetWorokingAlertWithMessage:[data objectForKey:@"msg"]];
+    }
+}
+
 //User Login
 - (void)loginWithAccount:(NSString *)accountStr AndPwd:(NSString *)pwdStr {
     [self checkQueue];
     
-    NSURL *url =[NSURL URLWithString:RegisterUrl];
+    NSURL *url =[NSURL URLWithString:LoginUrl];
     
     ASIFormDataRequest *request =[ASIFormDataRequest requestWithURL:url];
     [request addPostValue:accountStr forKey:@"account"];
@@ -84,6 +111,8 @@ static RKNetWorkingManager *_networkRequestManager;
     NSLog(@"%@", [request responseString]);
     NSDictionary *data =[[request responseString] JSONValue];
     if ([[data objectForKey:@"status"] isEqual:@"0"]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"IsLogined"];
+        [[NSUserDefaults standardUserDefaults] setValue:[data objectForKey:@"data"] forKey:@"UserInfo"];
         [loginDelagate getLoginResult];
     } else {
         [Common showNetWorokingAlertWithMessage:[data objectForKey:@"msg"]];

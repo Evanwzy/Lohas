@@ -54,6 +54,8 @@
     [self setAccountText_ip4:nil];
     [self setPwdText_ip4:nil];
     [self setNameText_ip4:nil];
+    [self setVerifyText_ip5:nil];
+    [self setVerifyText_ip4:nil];
     [super viewDidUnload];
 }
 
@@ -69,18 +71,18 @@
 #pragma mark - Button Action
 - (IBAction)registerBtnPressed:(UIButton *)sender {
     if (IS_IPHONE_5) {
-        if ([self.accountText_ip5.text isEqualToString:@""] && [self.pwdText_ip5.text isEqual:@""] &&[self.nameText_ip5.text isEqual:@""]) {
+        if ([self.accountText_ip5.text isEqualToString:@""] && [self.pwdText_ip5.text isEqual:@""] &&[self.nameText_ip5.text isEqual:@""] &&[self.verifyText_ip5.text isEqual:@""]) {
             UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"信息不完整" message:@"请输入完整信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
         } else {
-            [self registerRequest:self.accountText_ip5.text :self.pwdText_ip5.text :self.nameText_ip5.text ];
+            [self registerRequest:self.accountText_ip5.text :self.pwdText_ip5.text :self.nameText_ip5.text :self.verifyText_ip5.text];
         }
     } else {
-        if ([self.accountText_ip4.text isEqualToString:@""] && [self.pwdText_ip4 isEqual:@""] &&[self.nameText_ip4.text isEqual:@""]) {
+        if ([self.accountText_ip4.text isEqualToString:@""] && [self.pwdText_ip4 isEqual:@""] &&[self.nameText_ip4.text isEqual:@""] &&[self.verifyText_ip4.text isEqual:@""]) {
             UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"信息不完整" message:@"请输入完整信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
         } else {
-            [self registerRequest:self.accountText_ip4.text :self.pwdText_ip4.text :self.nameText_ip4.text];
+            [self registerRequest:self.accountText_ip4.text :self.pwdText_ip4.text :self.nameText_ip4.text :self.verifyText_ip4.text];
         }
     }
 }
@@ -89,28 +91,56 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:@"POPCONTROLLER" object:nil];
 }
 
+- (IBAction)checkBtnPressed:(id)sender {
+    if (IS_IPHONE_5) {
+        if ([self.accountText_ip5.text isEqualToString:@""]) {
+            UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"信息不完整" message:@"请输入完整信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+        } else {
+            [self checkAccountRequest:self.accountText_ip5.text];
+        }
+    } else {
+        if ([self.accountText_ip4.text isEqualToString:@""]) {
+            UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"信息不完整" message:@"请输入完整信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+        } else {
+            [self checkAccountRequest:self.accountText_ip4.text];
+        }
+    }
+}
+
 
 #pragma mark - Http Request Method
 
-- (void)registerRequest:(NSString *)accountStr :(NSString *)pwdStr :(NSString *)nameStr {
+- (void)registerRequest:(NSString *)accountStr :(NSString *)pwdStr :(NSString *)nameStr :(NSString *)verifyStr{
     if (IS_IPHONE_5) {
         self.accountText_ip5.text =@"";
         self.pwdText_ip5.text =@"";
         self.nameText_ip5.text =@"";
+        self.verifyText_ip5.text =@"";
     } else {
         self.accountText_ip4.text =@"";
         self.pwdText_ip4.text =@"";
         self.nameText_ip4.text =@"";
+        self.verifyText_ip4.text =@"";
     }
     [Common cancelAllRequestOfAllQueue];
     RKNetWorkingManager *manager =[RKNetWorkingManager sharedManager];
     manager.registerDelagate =self;
-    [manager registerWithAccount:accountStr AndPwd:pwdStr AndName:nameStr];
+    [manager registerWithAccount:accountStr AndPwd:pwdStr AndName:nameStr AndVerify:verifyStr];
+}
+
+- (void)checkAccountRequest:(NSString *)accountStr {
+    [Common cancelAllRequestOfAllQueue];
+    RKNetWorkingManager *manager =[RKNetWorkingManager sharedManager];
+    manager.registerDelagate =self;
+    [manager checkWithAccount:accountStr];
 }
 
 - (void)getRegisterResult {
     [self backBtnPressed:nil];
 }
+
 
 #pragma mark - UIKeyboardViewController delegate methods
 

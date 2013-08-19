@@ -10,7 +10,6 @@
 		69452F8E17BC98A0000B6674 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69452F8D17BC98A0000B6674 /* UIKit.framework */; };
 		69452F9017BC98A0000B6674 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69452F8F17BC98A0000B6674 /* Foundation.framework */; };
 		69452F9217BC98A0000B6674 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69452F9117BC98A0000B6674 /* CoreGraphics.framework */; };
-		69452F9817BC98A0000B6674 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69452F9617BC98A0000B6674 /* InfoPlist.strings */; };
 		69452F9A17BC98A0000B6674 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69452F9917BC98A0000B6674 /* main.m */; };
 		69452F9E17BC98A0000B6674 /* RKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69452F9D17BC98A0000B6674 /* RKAppDelegate.m */; };
 		69452FA017BC98A0000B6674 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 69452F9F17BC98A0000B6674 /* Default.png */; };
@@ -70,6 +69,15 @@
 		6945305A17BCC80D000B6674 /* RKRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6945305817BCC80D000B6674 /* RKRegisterViewController.xib */; };
 		6945306217BCE0A9000B6674 /* UIKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6945305F17BCE0A9000B6674 /* UIKeyboardView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6945306317BCE0A9000B6674 /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6945306117BCE0A9000B6674 /* UIKeyboardViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6945306A17BDEBFF000B6674 /* RKJoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6945306817BDEBFF000B6674 /* RKJoinViewController.m */; };
+		6945306B17BDEBFF000B6674 /* RKJoinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6945306917BDEBFF000B6674 /* RKJoinViewController.xib */; };
+		6945306D17BDFD36000B6674 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6945306C17BDFD35000B6674 /* QuartzCore.framework */; };
+		6945307617BE066D000B6674 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6945307417BE0669000B6674 /* InfoPlist.strings */; };
+		6945307717BE066D000B6674 /* Lohas-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6945307517BE066A000B6674 /* Lohas-Info.plist */; };
+		6945308617BF5958000B6674 /* CSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 6945308017BF5958000B6674 /* CSqlite.m */; };
+		6945308717BF5958000B6674 /* gps.db in Resources */ = {isa = PBXBuildFile; fileRef = 6945308117BF5958000B6674 /* gps.db */; };
+		6945308B17BF5982000B6674 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6945308A17BF5982000B6674 /* CoreLocation.framework */; };
+		6945308D17BF5995000B6674 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6945308C17BF5995000B6674 /* libsqlite3.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,9 +85,7 @@
 		69452F8D17BC98A0000B6674 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		69452F8F17BC98A0000B6674 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		69452F9117BC98A0000B6674 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		69452F9517BC98A0000B6674 /* Lohas-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Lohas-Info.plist"; sourceTree = "<group>"; };
-		69452F9717BC98A0000B6674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		69452F9917BC98A0000B6674 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		69452F9917BC98A0000B6674 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		69452F9B17BC98A0000B6674 /* Lohas-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lohas-Prefix.pch"; sourceTree = "<group>"; };
 		69452F9C17BC98A0000B6674 /* RKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RKAppDelegate.h; sourceTree = "<group>"; };
 		69452F9D17BC98A0000B6674 /* RKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKAppDelegate.m; sourceTree = "<group>"; };
@@ -190,6 +196,19 @@
 		6945305F17BCE0A9000B6674 /* UIKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardView.m; sourceTree = "<group>"; };
 		6945306017BCE0A9000B6674 /* UIKeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardViewController.h; sourceTree = "<group>"; };
 		6945306117BCE0A9000B6674 /* UIKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardViewController.m; sourceTree = "<group>"; };
+		6945306717BDEBFF000B6674 /* RKJoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKJoinViewController.h; sourceTree = "<group>"; };
+		6945306817BDEBFF000B6674 /* RKJoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKJoinViewController.m; sourceTree = "<group>"; };
+		6945306917BDEBFF000B6674 /* RKJoinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKJoinViewController.xib; sourceTree = "<group>"; };
+		6945306C17BDFD35000B6674 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6945307417BE0669000B6674 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		6945307517BE066A000B6674 /* Lohas-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Lohas-Info.plist"; sourceTree = "<group>"; };
+		6945307F17BF5958000B6674 /* CSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSqlite.h; sourceTree = "<group>"; };
+		6945308017BF5958000B6674 /* CSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSqlite.m; sourceTree = "<group>"; };
+		6945308117BF5958000B6674 /* gps.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = gps.db; sourceTree = "<group>"; };
+		6945308417BF5958000B6674 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		6945308517BF5958000B6674 /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
+		6945308A17BF5982000B6674 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6945308C17BF5995000B6674 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +216,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6945308D17BF5995000B6674 /* libsqlite3.0.dylib in Frameworks */,
+				6945308B17BF5982000B6674 /* CoreLocation.framework in Frameworks */,
+				6945306D17BDFD36000B6674 /* QuartzCore.framework in Frameworks */,
 				6945303317BC99B5000B6674 /* libxml2.dylib in Frameworks */,
 				6945303117BC99AF000B6674 /* libz.1.2.5.dylib in Frameworks */,
 				6945302F17BC9998000B6674 /* ImageIO.framework in Frameworks */,
@@ -233,6 +255,7 @@
 		69452F8C17BC98A0000B6674 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6945308C17BF5995000B6674 /* libsqlite3.0.dylib */,
 				6945303217BC99B5000B6674 /* libxml2.dylib */,
 				6945303017BC99AF000B6674 /* libz.1.2.5.dylib */,
 				6945302E17BC9998000B6674 /* ImageIO.framework */,
@@ -243,6 +266,8 @@
 				69452F8D17BC98A0000B6674 /* UIKit.framework */,
 				69452F8F17BC98A0000B6674 /* Foundation.framework */,
 				69452F9117BC98A0000B6674 /* CoreGraphics.framework */,
+				6945306C17BDFD35000B6674 /* QuartzCore.framework */,
+				6945308A17BF5982000B6674 /* CoreLocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -263,8 +288,8 @@
 		69452F9417BC98A0000B6674 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				69452F9517BC98A0000B6674 /* Lohas-Info.plist */,
-				69452F9617BC98A0000B6674 /* InfoPlist.strings */,
+				6945307417BE0669000B6674 /* InfoPlist.strings */,
+				6945307517BE066A000B6674 /* Lohas-Info.plist */,
 				69452F9917BC98A0000B6674 /* main.m */,
 				69452F9B17BC98A0000B6674 /* Lohas-Prefix.pch */,
 				69452F9F17BC98A0000B6674 /* Default.png */,
@@ -310,6 +335,7 @@
 		69452FAD17BC9961000B6674 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				6945307E17BF5958000B6674 /* GPSSqlite */,
 				69452FAE17BC9961000B6674 /* asi-http-request */,
 				69452FC717BC9961000B6674 /* JSON */,
 				69452FE117BC9961000B6674 /* Reachability */,
@@ -490,6 +516,9 @@
 		6945304217BCA6AD000B6674 /* JoinView */ = {
 			isa = PBXGroup;
 			children = (
+				6945306717BDEBFF000B6674 /* RKJoinViewController.h */,
+				6945306817BDEBFF000B6674 /* RKJoinViewController.m */,
+				6945306917BDEBFF000B6674 /* RKJoinViewController.xib */,
 			);
 			path = JoinView;
 			sourceTree = "<group>";
@@ -544,6 +573,18 @@
 			path = UIKeyboard;
 			sourceTree = "<group>";
 		};
+		6945307E17BF5958000B6674 /* GPSSqlite */ = {
+			isa = PBXGroup;
+			children = (
+				6945307F17BF5958000B6674 /* CSqlite.h */,
+				6945308017BF5958000B6674 /* CSqlite.m */,
+				6945308117BF5958000B6674 /* gps.db */,
+				6945308417BF5958000B6674 /* sqlite3.h */,
+				6945308517BF5958000B6674 /* sqlite3ext.h */,
+			);
+			path = GPSSqlite;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -580,6 +621,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 69452F8117BC98A0000B6674;
 			productRefGroup = 69452F8B17BC98A0000B6674 /* Products */;
@@ -596,7 +638,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69452F9817BC98A0000B6674 /* InfoPlist.strings in Resources */,
 				69452FA017BC98A0000B6674 /* Default.png in Resources */,
 				69452FA217BC98A0000B6674 /* Default@2x.png in Resources */,
 				69452FA417BC98A0000B6674 /* Default-568h@2x.png in Resources */,
@@ -604,6 +645,10 @@
 				6945304917BCA6DF000B6674 /* RKCityListViewController.xib in Resources */,
 				6945305417BCB270000B6674 /* RKMyLohasViewController.xib in Resources */,
 				6945305A17BCC80D000B6674 /* RKRegisterViewController.xib in Resources */,
+				6945306B17BDEBFF000B6674 /* RKJoinViewController.xib in Resources */,
+				6945307617BE066D000B6674 /* InfoPlist.strings in Resources */,
+				6945307717BE066D000B6674 /* Lohas-Info.plist in Resources */,
+				6945308717BF5958000B6674 /* gps.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,21 +704,12 @@
 				6945305917BCC80D000B6674 /* RKRegisterViewController.m in Sources */,
 				6945306217BCE0A9000B6674 /* UIKeyboardView.m in Sources */,
 				6945306317BCE0A9000B6674 /* UIKeyboardViewController.m in Sources */,
+				6945306A17BDEBFF000B6674 /* RKJoinViewController.m in Sources */,
+				6945308617BF5958000B6674 /* CSqlite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		69452F9617BC98A0000B6674 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				69452F9717BC98A0000B6674 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		69452FA517BC98A0000B6674 /* Debug */ = {

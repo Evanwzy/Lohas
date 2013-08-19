@@ -22,6 +22,7 @@
     
     //NetWorkingRequestDelegate
     id<RKNetWorkingManagerRegisterDelegate> registerDelegate;
+    id<RKNetWorkingManagerLoginDelegate> loginDelagate;
 }
 
 @property (nonatomic, retain) ASINetworkQueue *queue;
@@ -34,7 +35,8 @@
 + (RKNetWorkingManager *)sharedManager;
 
 //upload Request
-- (void) registerWithAccount:(NSString *)accountStr AndPwd:(NSString *)pwdStr AndName:(NSString *)nameStr;
+- (void) registerWithAccount:(NSString *)accountStr AndPwd:(NSString *)pwdStr AndName:(NSString *)nameStr AndVerify:(NSString *)verifyStr;
+- (void) checkWithAccount:(NSString *)accountStr;
 - (void) loginWithAccount:(NSString *)accountStr AndPwd:(NSString *)pwdStr;
 
 

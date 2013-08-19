@@ -18,9 +18,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popToRootViewControllerEvent:) name:@"POPTOROOTCONTROLLER" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentModalViewControllerEvent:) name:@"PRESENTCONTROLLER" object:nil];
     
-    //set IsLogined Value
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"IsLogined"];
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     RKHomeViewController *hvCtr =[[RKHomeViewController alloc]init];

@@ -10,6 +10,7 @@
 
 #import "RKCityListViewController.h"
 #import "RKMyLohasViewController.h"
+#import "RKJoinViewController.h"
 
 @interface RKHomeViewController ()
 
@@ -30,8 +31,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    //set IsLogined Value
+    [[NSUserDefaults standardUserDefaults] setValue:@"0" forKey:@"IsLogined"];
+    
     [self setUI];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -67,5 +74,12 @@
     mvCtr.viewType =myLohasType;
     [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:mvCtr];
 }
-    
+
+- (IBAction)joinBtnPressed:(id)sender {
+    RKJoinViewController *jvCtr =[[RKJoinViewController alloc]init];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:jvCtr];
+}
+
+
+
 @end
