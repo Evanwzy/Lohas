@@ -78,6 +78,10 @@
 - (IBAction)joinBtnPressed:(id)sender {
     RKJoinViewController *jvCtr =[[RKJoinViewController alloc]init];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:jvCtr];
+    
+//    RKMyLohasViewController *mvCtr =[[RKMyLohasViewController alloc]init];
+//    mvCtr.viewType =joinType;
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:mvCtr];
 }
 
 

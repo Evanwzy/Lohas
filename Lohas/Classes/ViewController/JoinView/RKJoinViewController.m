@@ -54,13 +54,17 @@
     [self setDoorPhotoBtn:nil];
     [self setCertificateBtn:nil];
     [self setLocationText:nil];
+    [self setPeopleText:nil];
+    [self setDateText:nil];
+    [self setKindText:nil];
+    [self setSiteText:nil];
     [super viewDidUnload];
 }
 
 
 #pragma mark - UI Setting
 - (void)setupUI {
-    [self.viewSV setContentSize:CGSizeMake(320.0f, 635.0f)];
+    [self.viewSV setContentSize:CGSizeMake(320.0f, 760.0f)];
     
     if (IS_IPHONE_5) {
         [self.viewSV setFrame:CGRectMake(0.0f, 88.0f, 320.0f, 460.0f)];
@@ -68,13 +72,48 @@
         [self.viewSV setFrame:CGRectMake(0.0f, 88.0f, 320.0f, 372.0f)];
     }
     
+    self.peopleInCharge =[self.userDict objectForKey:@"name"];
+    self.peopleText.text =_peopleInCharge;
+    
+    RadioButton *rb1 = [[RadioButton alloc] initWithGroupId:@"shop kind" index:0];
+    RadioButton *rb2 = [[RadioButton alloc] initWithGroupId:@"shop kind" index:1];
+    
+    rb1.frame = CGRectMake(140,467,22,22);
+    rb2.frame = CGRectMake(230,467,22,22);
+    
+    [self.viewSV addSubview:rb1];
+    [self.viewSV addSubview:rb2];
+    
     [self.view addSubview:_viewSV];
+    self.flatDatePicker = [[FlatDatePicker alloc] initWithParentView:self.view];
+    self.flatDatePicker.delegate = self;
+    self.flatDatePicker.title = @"请选择日期";
+    self.flatDatePicker.datePickerMode = FlatDatePickerModeDate;
+    
+    [RadioButton addObserverForGroupId:@"shop kind" observer:self];
 }
 
 #pragma mark - button Action
 
+- (IBAction)kindBtnPressed:(id)sender {
+    NSArray * arr = [[NSArray alloc] init];
+    arr = [NSArray arrayWithObjects:@"美食", @"美食", @"美食", @"美食", @"美食", @"美食", @"美食", @"美食", @"美食", @"美食",nil];
+    if(dropDwon == nil) {
+        CGFloat f = 200;
+        dropDwon = [[NIDropDown alloc]showDropDown:sender :&f :arr];
+        dropDwon.delegate = self;
+    }
+    else {
+        [dropDwon hideDropDown:sender];
+    }
+}
+
+- (IBAction)dateBtnPressed:(id)sender {
+    [self.flatDatePicker show];
+}
+
 - (IBAction)backBtn:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"POPCONTROLLER" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"POPTOROOTCONTROLLER" object:nil];
 }
 
 - (IBAction)takeImageBtnPressed:(id)sender {
@@ -86,7 +125,7 @@
         _btnType =CertificateType;
     }
     
-    UIActionSheet *as=[[UIActionSheet alloc]initWithTitle:@"上传头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照上传" otherButtonTitles:@"从相册选取", nil ];
+    UIActionSheet *as=[[UIActionSheet alloc]initWithTitle:@"上传照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照上传" otherButtonTitles:@"从相册选取", nil ];
     [as showInView:self.view];
 }
 
@@ -156,7 +195,7 @@
 }
 
 
-#pragma mark ----------图片选择完成-------------
+#pragma mark - Selected Photo
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     if (_btnType ==DoorPhotoType) {
@@ -283,6 +322,70 @@
     return yGps;
     
     
+}
+
+#pragma mark - NIDrop Button Delegate
+- (void) niDropDownDelegateMethod: (NIDropDown *) sender :(NSString *)text{
+    self.kindText.text =text;
+    [Common cancelAllRequestOfAllQueue];
+    [self rel];
+}
+
+-(void)rel{
+    dropDwon = nil;
+}
+
+#pragma mark - FlatDatePicker Delegate
+
+- (void)flatDatePicker:(FlatDatePicker*)datePicker dateDidChange:(NSDate*)date {
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[NSLocale currentLocale]];
+    
+    if (datePicker.datePickerMode == FlatDatePickerModeDate) {
+        [dateFormatter setDateFormat:@"yyyy年MMMMdd日"];
+    } else if (datePicker.datePickerMode == FlatDatePickerModeTime) {
+        [dateFormatter setDateFormat:@"HH:mm:ss"];
+    } else {
+        [dateFormatter setDateFormat:@"dd MMMM yyyy HH:mm:ss"];
+    }
+    
+    NSString *value = [dateFormatter stringFromDate:date];
+    
+    self.dateText.text = value;
+}
+
+- (void)flatDatePicker:(FlatDatePicker*)datePicker didCancel:(UIButton*)sender {
+//    
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"FlatDatePicker" message:@"Did cancelled !" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+//    [alertView show];
+}
+
+- (void)flatDatePicker:(FlatDatePicker*)datePicker didValid:(UIButton*)sender date:(NSDate*)date {
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[NSLocale currentLocale]];
+    
+    if (datePicker.datePickerMode == FlatDatePickerModeDate) {
+        [dateFormatter setDateFormat:@"yyyy年MMMMdd日"];
+    } else if (datePicker.datePickerMode == FlatDatePickerModeTime) {
+        [dateFormatter setDateFormat:@"HH:mm:ss"];
+    } else {
+        [dateFormatter setDateFormat:@"dd MMMM yyyy HH:mm:ss"];
+    }
+    
+    NSString *value = [dateFormatter stringFromDate:date];
+    
+    self.dateText.text = value;
+    
+//    NSString *message = [NSString stringWithFormat:@"Did valid date : %@", value];
+//    
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"FlatDatePicker" message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+//    [alertView show];
+}
+
+-(void)radioButtonSelectedAtIndex:(NSUInteger)index inGroup:(NSString *)groupId{
+    self.shopKind =[NSString stringWithFormat:@"%d", index];
 }
 
 @end

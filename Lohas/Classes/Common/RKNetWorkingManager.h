@@ -13,6 +13,7 @@
 
 @protocol RKNetWorkingManagerRegisterDelegate;
 @protocol RKNetWorkingManagerLoginDelegate;
+@protocol RKNetWorkingManagerJoinLohasDelegate;
 
 @interface RKNetWorkingManager : NSObject {
     ASINetworkQueue *queue;
@@ -23,6 +24,7 @@
     //NetWorkingRequestDelegate
     id<RKNetWorkingManagerRegisterDelegate> registerDelegate;
     id<RKNetWorkingManagerLoginDelegate> loginDelagate;
+    id<RKNetWorkingManagerJoinLohasDelegate> joinLohasDelegate;
 }
 
 @property (nonatomic, retain) ASINetworkQueue *queue;
@@ -31,6 +33,7 @@
 
 @property (nonatomic, assign) id<RKNetWorkingManagerRegisterDelegate> registerDelagate;
 @property (nonatomic, assign) id<RKNetWorkingManagerLoginDelegate> loginDelagate;
+@property (nonatomic, assign) id<RKNetWorkingManagerJoinLohasDelegate> joinLohasDelegate;
 
 + (RKNetWorkingManager *)sharedManager;
 
@@ -38,7 +41,7 @@
 - (void) registerWithAccount:(NSString *)accountStr AndPwd:(NSString *)pwdStr AndName:(NSString *)nameStr AndVerify:(NSString *)verifyStr;
 - (void) checkWithAccount:(NSString *)accountStr;
 - (void) loginWithAccount:(NSString *)accountStr AndPwd:(NSString *)pwdStr;
-
+- (void) joinLohasWithAccount:(NSString *)accountStr Kind:(NSString *)kindStr Site:(NSString *)site Location:(NSString *)locationStr Latitude:(NSString *)latitudeStr Longitude:(NSString *)longitudeStr Doorphoto:(UIImage *)doorImg Date:(NSString *)dateStr ShopKind:(NSString *)shopkind Certificatephoto:(UIImage *)certificateImg PeopleInCharge:(NSString *)peoInCharge;
 
 @end
 
@@ -51,5 +54,11 @@
 @protocol RKNetWorkingManagerLoginDelegate <NSObject>
 
 - (void) getLoginResult;
+
+@end
+
+@protocol RKNetWorkingManagerJoinLohasDelegate <NSObject>
+
+- (void) getjoinLohasResult;
 
 @end

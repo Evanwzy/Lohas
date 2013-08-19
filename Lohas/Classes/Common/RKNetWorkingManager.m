@@ -119,6 +119,22 @@ static RKNetWorkingManager *_networkRequestManager;
     }
 }
 
+//join Lohas
+-(void)joinLohasWithAccount:(NSString *)accountStr Kind:(NSString *)kindStr Site:(NSString *)site Location:(NSString *)locationStr Latitude:(NSString *)latitudeStr Longitude:(NSString *)longitudeStr Doorphoto:(UIImage *)doorImg Date:(NSString *)dateStr ShopKind:(NSString *)shopkind Certificatephoto:(UIImage *)certificateImg PeopleInCharge:(NSString *)peoInCharge {
+    [self checkQueue];
+    
+    NSURL *url =[NSURL URLWithString:LoginUrl];
+    NSData *doorImgData =UIImageJPEGRepresentation(doorImg, 1.0);
+    NSData *certificateImgData =UIImageJPEGRepresentation(certificateImg, 1.0);
+    
+    ASIFormDataRequest *request =[ASIFormDataRequest requestWithURL:url];
+    [request addData:doorImgData forKey:@""];
+    [request addData:certificateImgData forKey:@""];
+    [request addPostValue:accountStr forKey:@"account"];
+    request addPostValue:<#(id<NSObject>)#> forKey:<#(NSString *)#>
+    
+}
+
 #pragma mark - Common methods
 -(void)checkQueue{
     if (!queue) {

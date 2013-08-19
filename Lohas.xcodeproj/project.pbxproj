@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		693BD59F17C1B3EE0039430B /* NIDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 693BD59E17C1B3EE0039430B /* NIDropDown.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		693BD5A717C1C0AE0039430B /* FlatDatePicker-Icon-Check.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5A117C1C0AE0039430B /* FlatDatePicker-Icon-Check.png */; };
+		693BD5A817C1C0AE0039430B /* FlatDatePicker-Icon-Check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5A217C1C0AE0039430B /* FlatDatePicker-Icon-Check@2x.png */; };
+		693BD5A917C1C0AE0039430B /* FlatDatePicker-Icon-Close.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5A317C1C0AE0039430B /* FlatDatePicker-Icon-Close.png */; };
+		693BD5AA17C1C0AE0039430B /* FlatDatePicker-Icon-Close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5A417C1C0AE0039430B /* FlatDatePicker-Icon-Close@2x.png */; };
+		693BD5AB17C1C0AE0039430B /* FlatDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 693BD5A617C1C0AE0039430B /* FlatDatePicker.m */; };
+		693BD5B117C1C8BA0039430B /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 693BD5AE17C1C8BA0039430B /* RadioButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		693BD5B517C1CE400039430B /* RadioButton-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5B317C1CE400039430B /* RadioButton-Selected.png */; };
+		693BD5B617C1CE400039430B /* RadioButton-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5B417C1CE400039430B /* RadioButton-Unselected.png */; };
 		69452F8E17BC98A0000B6674 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69452F8D17BC98A0000B6674 /* UIKit.framework */; };
 		69452F9017BC98A0000B6674 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69452F8F17BC98A0000B6674 /* Foundation.framework */; };
 		69452F9217BC98A0000B6674 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69452F9117BC98A0000B6674 /* CoreGraphics.framework */; };
@@ -81,6 +90,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		693BD59D17C1B3EE0039430B /* NIDropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIDropDown.h; sourceTree = "<group>"; };
+		693BD59E17C1B3EE0039430B /* NIDropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIDropDown.m; sourceTree = "<group>"; };
+		693BD5A117C1C0AE0039430B /* FlatDatePicker-Icon-Check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Check.png"; sourceTree = "<group>"; };
+		693BD5A217C1C0AE0039430B /* FlatDatePicker-Icon-Check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Check@2x.png"; sourceTree = "<group>"; };
+		693BD5A317C1C0AE0039430B /* FlatDatePicker-Icon-Close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Close.png"; sourceTree = "<group>"; };
+		693BD5A417C1C0AE0039430B /* FlatDatePicker-Icon-Close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Close@2x.png"; sourceTree = "<group>"; };
+		693BD5A517C1C0AE0039430B /* FlatDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatDatePicker.h; sourceTree = "<group>"; };
+		693BD5A617C1C0AE0039430B /* FlatDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatDatePicker.m; sourceTree = "<group>"; };
+		693BD5AD17C1C8BA0039430B /* RadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioButton.h; sourceTree = "<group>"; };
+		693BD5AE17C1C8BA0039430B /* RadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioButton.m; sourceTree = "<group>"; };
+		693BD5B317C1CE400039430B /* RadioButton-Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Selected.png"; sourceTree = "<group>"; };
+		693BD5B417C1CE400039430B /* RadioButton-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Unselected.png"; sourceTree = "<group>"; };
 		69452F8A17BC98A0000B6674 /* Lohas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lohas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69452F8D17BC98A0000B6674 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		69452F8F17BC98A0000B6674 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -235,6 +256,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		693BD59C17C1B3EE0039430B /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				693BD59D17C1B3EE0039430B /* NIDropDown.h */,
+				693BD59E17C1B3EE0039430B /* NIDropDown.m */,
+			);
+			path = DropDown;
+			sourceTree = "<group>";
+		};
+		693BD5A017C1C0AE0039430B /* FlatDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				693BD5A117C1C0AE0039430B /* FlatDatePicker-Icon-Check.png */,
+				693BD5A217C1C0AE0039430B /* FlatDatePicker-Icon-Check@2x.png */,
+				693BD5A317C1C0AE0039430B /* FlatDatePicker-Icon-Close.png */,
+				693BD5A417C1C0AE0039430B /* FlatDatePicker-Icon-Close@2x.png */,
+				693BD5A517C1C0AE0039430B /* FlatDatePicker.h */,
+				693BD5A617C1C0AE0039430B /* FlatDatePicker.m */,
+			);
+			path = FlatDatePicker;
+			sourceTree = "<group>";
+		};
+		693BD5AC17C1C8BA0039430B /* RDButton */ = {
+			isa = PBXGroup;
+			children = (
+				693BD5AD17C1C8BA0039430B /* RadioButton.h */,
+				693BD5AE17C1C8BA0039430B /* RadioButton.m */,
+				693BD5B317C1CE400039430B /* RadioButton-Selected.png */,
+				693BD5B417C1CE400039430B /* RadioButton-Unselected.png */,
+			);
+			path = RDButton;
+			sourceTree = "<group>";
+		};
 		69452F8117BC98A0000B6674 = {
 			isa = PBXGroup;
 			children = (
@@ -335,12 +389,15 @@
 		69452FAD17BC9961000B6674 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				693BD59C17C1B3EE0039430B /* DropDown */,
 				6945307E17BF5958000B6674 /* GPSSqlite */,
 				69452FAE17BC9961000B6674 /* asi-http-request */,
 				69452FC717BC9961000B6674 /* JSON */,
 				69452FE117BC9961000B6674 /* Reachability */,
 				69452FE417BC9961000B6674 /* SDWebImage */,
 				6945305D17BCE0A9000B6674 /* UIKeyboard */,
+				693BD5A017C1C0AE0039430B /* FlatDatePicker */,
+				693BD5AC17C1C8BA0039430B /* RDButton */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -649,6 +706,12 @@
 				6945307617BE066D000B6674 /* InfoPlist.strings in Resources */,
 				6945307717BE066D000B6674 /* Lohas-Info.plist in Resources */,
 				6945308717BF5958000B6674 /* gps.db in Resources */,
+				693BD5A717C1C0AE0039430B /* FlatDatePicker-Icon-Check.png in Resources */,
+				693BD5A817C1C0AE0039430B /* FlatDatePicker-Icon-Check@2x.png in Resources */,
+				693BD5A917C1C0AE0039430B /* FlatDatePicker-Icon-Close.png in Resources */,
+				693BD5AA17C1C0AE0039430B /* FlatDatePicker-Icon-Close@2x.png in Resources */,
+				693BD5B517C1CE400039430B /* RadioButton-Selected.png in Resources */,
+				693BD5B617C1CE400039430B /* RadioButton-Unselected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,6 +769,9 @@
 				6945306317BCE0A9000B6674 /* UIKeyboardViewController.m in Sources */,
 				6945306A17BDEBFF000B6674 /* RKJoinViewController.m in Sources */,
 				6945308617BF5958000B6674 /* CSqlite.m in Sources */,
+				693BD59F17C1B3EE0039430B /* NIDropDown.m in Sources */,
+				693BD5AB17C1C0AE0039430B /* FlatDatePicker.m in Sources */,
+				693BD5B117C1C8BA0039430B /* RadioButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

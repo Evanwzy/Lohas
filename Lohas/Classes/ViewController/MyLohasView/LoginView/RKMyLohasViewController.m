@@ -9,6 +9,7 @@
 #import "RKMyLohasViewController.h"
 
 #import "RKRegisterViewController.h"
+#import "RKJoinViewController.h"
 
 @interface RKMyLohasViewController ()
 
@@ -60,16 +61,22 @@
 #pragma mark - UI Setting
 - (void)setupUI {
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"IsLogined"] isEqualToString:@"1"]) {
-        NSDictionary *userInfo = [[NSUserDefaults standardUserDefaults] valueForKey:@"UserInfo"];
-        if (IS_IPHONE_5) {
-            self.nameLabel_ip5.text = [userInfo objectForKey:@"name"];
-            [self.view_ip5 removeFromSuperview];
-            [self.view addSubview:self.loginedView_ip5];
+        if (_viewType ==joinType) {
+            NSDictionary *userInfo = [[NSUserDefaults standardUserDefaults] valueForKey:@"UserInfo"];
+            RKJoinViewController *jvCtr =[[RKJoinViewController alloc]init];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"PUSHCONTROLLER" object:jvCtr];
         } else {
-            
-            self.nameLabel_ip4.text = [userInfo objectForKey:@"name"];
-            [self.view_ip5 removeFromSuperview];
-            [self.view addSubview:self.loginedView_ip4];
+            NSDictionary *userInfo = [[NSUserDefaults standardUserDefaults] valueForKey:@"UserInfo"];
+            if (IS_IPHONE_5) {
+                self.nameLabel_ip5.text = [userInfo objectForKey:@"name"];
+                [self.view_ip5 removeFromSuperview];
+                [self.view addSubview:self.loginedView_ip5];
+            } else {
+                
+                self.nameLabel_ip4.text = [userInfo objectForKey:@"name"];
+                [self.view_ip5 removeFromSuperview];
+                [self.view addSubview:self.loginedView_ip4];
+            }
         }
     }else {
         if (IS_IPHONE_5) {
