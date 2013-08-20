@@ -64,6 +64,7 @@
         if (_viewType ==joinType) {
             NSDictionary *userInfo = [[NSUserDefaults standardUserDefaults] valueForKey:@"UserInfo"];
             RKJoinViewController *jvCtr =[[RKJoinViewController alloc]init];
+            jvCtr.userDict =userInfo;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"PUSHCONTROLLER" object:jvCtr];
         } else {
             NSDictionary *userInfo = [[NSUserDefaults standardUserDefaults] valueForKey:@"UserInfo"];
@@ -107,7 +108,10 @@
 }
 
 - (IBAction)loginOutBtn:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setValue:@"0" forKey:@"IsLogined"];
+    [self setupUI];
 }
+
 
 
 
@@ -118,24 +122,25 @@
     NSString *accountStr;
     NSString *pwdStr;
     if (IS_IPHONE_5) {
-        if ([self.accountText_ip5.text isEqual:@""] && [self.pwdText_ip5.text isEqual:@""]) {
+        if (self.accountText_ip5.text.length ==0 && self.pwdText_ip5.text.length ==0) {
             UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"信息不完整" message:@"请输入完整信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
         } else {
             accountStr    =self.accountText_ip5.text;
             pwdStr        =self.pwdText_ip5.text;
+            [manager loginWithAccount:accountStr AndPwd:pwdStr];
         }
         
     } else {
-        if ([self.accountText_ip4.text isEqual:@""] && [self.pwdText_ip4.text isEqual:@""]) {
+        if (self.accountText_ip4.text.length ==0 && self.pwdText_ip4.text.length ==0) {
             UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"信息不完整" message:@"请输入完整信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
         } else {
             accountStr    =self.accountText_ip4.text;
             pwdStr        =self.pwdText_ip4.text;
+            [manager loginWithAccount:accountStr AndPwd:pwdStr];
         }
     }
-    [manager loginWithAccount:accountStr AndPwd:pwdStr];
 }
 
 - (void)getLoginResult {

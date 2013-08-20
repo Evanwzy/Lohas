@@ -16,7 +16,7 @@
 @synthesize queue;
 @synthesize singleQueue;
 
-@synthesize registerDelagate, loginDelagate;
+@synthesize registerDelagate, loginDelagate, joinLohasDelegate;
 
 #pragma - singleton
 
@@ -120,19 +120,72 @@ static RKNetWorkingManager *_networkRequestManager;
 }
 
 //join Lohas
--(void)joinLohasWithAccount:(NSString *)accountStr Kind:(NSString *)kindStr Site:(NSString *)site Location:(NSString *)locationStr Latitude:(NSString *)latitudeStr Longitude:(NSString *)longitudeStr Doorphoto:(UIImage *)doorImg Date:(NSString *)dateStr ShopKind:(NSString *)shopkind Certificatephoto:(UIImage *)certificateImg PeopleInCharge:(NSString *)peoInCharge {
+-(void)joinLohasWithName:(NSString *)nameStr Account:(NSString *)accountStr Kind:(NSString *)kindStr Site:(NSString *)site Latitude:(NSString *)latitudeStr Longitude:(NSString *)longitudeStr Address:(NSString *)addressStr Doorphoto:(UIImage *)doorImg Date:(NSString *)dateStr ShopKind:(NSString *)shopkind Certificatephoto:(UIImage *)certificateImg PeopleInCharge:(NSString *)peoInCharge Ctiy:(NSString *)city {
     [self checkQueue];
     
-    NSURL *url =[NSURL URLWithString:LoginUrl];
-    NSData *doorImgData =UIImageJPEGRepresentation(doorImg, 1.0);
-    NSData *certificateImgData =UIImageJPEGRepresentation(certificateImg, 1.0);
+    NSURL *url =[NSURL URLWithString:joinUrl];
+    NSString *doorImgPath =[Common pathForImage:@"1.jpg"];
+    NSString *certificateImgPath =[Common pathForImage:@"2.jpg"];
     
     ASIFormDataRequest *request =[ASIFormDataRequest requestWithURL:url];
-    [request addData:doorImgData forKey:@""];
-    [request addData:certificateImgData forKey:@""];
+    [request addPostValue:nameStr forKey:@"store_name"];
     [request addPostValue:accountStr forKey:@"account"];
-    request addPostValue:<#(id<NSObject>)#> forKey:<#(NSString *)#>
+    [request addPostValue:kindStr forKey:@"trade"];
+    [request addPostValue:site forKey:@"estate"];
+    [request addPostValue:latitudeStr forKey:@"lat"];
+    [request addPostValue:longitudeStr forKey:@"lng"];
+    [request addPostValue:addressStr forKey:@"address"];
+    [request addFile:doorImgPath withFileName:@"1.jpg" andContentType:@"image/jpg" forKey:@"store_pic"];
+    [request addPostValue:dateStr forKey:@"start_business"];
+    [request addPostValue:shopkind forKey:@"classification"];
+    [request addFile:certificateImgPath withFileName:@"2.jpg" andContentType:@"image/jpg" forKey:@"licence_pic"];
+    [request addPostValue:peoInCharge forKey:@"official"];
+    [request addPostValue:city forKey:@"city"];
+    [request addPostValue:[Common getKey] forKey:@"user_key"];
     
+    [request setDelegate:self];
+    [request setDidFinishSelector:@selector(joinLohasFinished:)];
+    [request setDidFailSelector:@selector(commonRequestQueryDataFailed:)];
+    
+    request.timeOutSeconds=10;
+    
+    [queue addOperation:request];
+    
+}
+
+- (void)joinLohasFinished:(ASIHTTPRequest *)request {
+    NSLog(@"%@", [request responseString]);
+    NSDictionary *data =[[request responseString] JSONValue];
+    if ([[data objectForKey:@"status"] isEqual:@"0"]) {
+        [joinLohasDelegate getjoinLohasResult];
+    } else {
+        [Common showNetWorokingAlertWithMessage:[data objectForKey:@"msg"]];
+    }
+}
+
+//get certifition data
+- (void) getCertifitionDataWithLatitude:(NSString *)latitude Longitude:(NSString *)longitude distance:(NSString *)distance kind:(NSString *)kind {
+    [self checkQueue];
+    
+    latitude =@"31.241402";
+    longitude =@"121.505665";
+    distance =@"50";
+    kind =@"1";
+    
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/&lng=%@&lat=%@&distance=%@&trade=%@", getCertifitionUrl, longitude, latitude, distance, kind]];
+    
+    ASIHTTPRequest *request =[ASIFormDataRequest requestWithURL:url];
+    
+    [request setDelegate:self];
+    [request setDidFinishSelector:@selector(getCertifitionDataFinished:)];
+    [request setDidFailSelector:@selector(commonRequestQueryDataFailed:)];
+    [queue addOperation:request];
+    
+}
+
+- (void) getCertifitionDataFinished :(ASIHTTPRequest *)request {
+    NSLog(@"%@", [request responseString]);
 }
 
 #pragma mark - Common methods

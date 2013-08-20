@@ -73,7 +73,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 22;
+    return 30;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -104,11 +104,11 @@
     [self hideDropDown:btnSender];
     UITableViewCell *c = [tableView cellForRowAtIndexPath:indexPath];
 //    [btnSender setTitle:c.textLabel.text forState:UIControlStateNormal];
-    [self myDelegate :(NSString *)c.textLabel.text];
+    [self myDelegate :(NSString *)c.textLabel.text :(int)indexPath.row];
 }
 
-- (void) myDelegate :(NSString *)text {
-    [self.delegate niDropDownDelegateMethod:self :text];
+- (void) myDelegate :(NSString *)text :(int)indexPath{
+    [self.delegate niDropDownDelegateMethod:self :text :indexPath+1];
 }
 
 -(void)dealloc {

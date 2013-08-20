@@ -15,12 +15,31 @@
     return [str substringFromIndex:3];
 }
 
++(NSString *)getKey {
+    NSDictionary *dict =[[NSUserDefaults standardUserDefaults] objectForKey:@"UserInfo"];
+    return [dict objectForKey:@"user_key"];
+}
 
++ (NSString *)pathForImage:(NSString *)fname {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingFormat:@"/%@", fname];
+    return path;
+}
+
++ (NSString *)pathForPlist:(NSString *)fname {
+    NSString *path = [[NSBundle mainBundle] pathForResource:fname ofType:@"plist"];
+    return path;
+}
 
 #pragma mark - Cancel Request
 
 + (void)showNetWorokingAlertWithMessage :(NSString *)msg {
-    UIAlertView * alert =[[UIAlertView alloc]initWithTitle:@"出错啦！" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    UIAlertView * alert =[[UIAlertView alloc]initWithTitle:@"出错啦" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+}
+
++ (void)showNetWorokingAlertWithMessageWithSucc :(NSString *)msg {
+    UIAlertView * alert =[[UIAlertView alloc]initWithTitle:@"成功" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
 }
 

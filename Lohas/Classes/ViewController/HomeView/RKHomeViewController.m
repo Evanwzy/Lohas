@@ -11,6 +11,7 @@
 #import "RKCityListViewController.h"
 #import "RKMyLohasViewController.h"
 #import "RKJoinViewController.h"
+#import "RKDiscountViewController.h"
 
 @interface RKHomeViewController ()
 
@@ -32,13 +33,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    //set IsLogined Value
-    [[NSUserDefaults standardUserDefaults] setValue:@"0" forKey:@"IsLogined"];
-    
-    [self setUI];
 }
 
-
+-(void)viewWillAppear:(BOOL)animated {
+    [self setUI];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -56,32 +55,44 @@
 
 #pragma mark - UI Setting
 - (void)setUI {
+    NSString *city =[[NSUserDefaults standardUserDefaults] objectForKey:@"city"];
     if (IS_IPHONE_5) {
         [self.view addSubview:_view_ip5];
+        [self.cityBtn setTitle:city forState:UIControlStateNormal];
     }else {
         [self.view addSubview:_view_ip4];
+        [self.cityBtn setTitle:city forState:UIControlStateNormal];
     }
 }
 
 - (IBAction)cityBtnPressed:(id)sender {
+    [Common cancelAllRequestOfAllQueue];
         RKCityListViewController *cvCtr =[[RKCityListViewController alloc]init];
         UINavigationController *navCtr =[[UINavigationController alloc]initWithRootViewController:cvCtr];
         [self.navigationController presentViewController:navCtr animated:YES completion:nil];
 }
 
+- (IBAction)discountBtnPressed:(id)sender {
+    [Common cancelAllRequestOfAllQueue];
+    RKDiscountViewController *dvCtr =[[RKDiscountViewController alloc]init];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PUSHCONTROLLER" object:dvCtr];
+}
+
 - (IBAction)myLohasBtnPressed:(id)sender {
+    [Common cancelAllRequestOfAllQueue];
     RKMyLohasViewController *mvCtr =[[RKMyLohasViewController alloc]init];
     mvCtr.viewType =myLohasType;
     [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:mvCtr];
 }
 
 - (IBAction)joinBtnPressed:(id)sender {
-    RKJoinViewController *jvCtr =[[RKJoinViewController alloc]init];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:jvCtr];
+    [Common cancelAllRequestOfAllQueue];
+//    RKJoinViewController *jvCtr =[[RKJoinViewController alloc]init];
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:jvCtr];
     
-//    RKMyLohasViewController *mvCtr =[[RKMyLohasViewController alloc]init];
-//    mvCtr.viewType =joinType;
-//    [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:mvCtr];
+    RKMyLohasViewController *mvCtr =[[RKMyLohasViewController alloc]init];
+    mvCtr.viewType =joinType;
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:mvCtr];
 }
 
 

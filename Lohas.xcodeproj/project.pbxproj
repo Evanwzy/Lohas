@@ -16,6 +16,22 @@
 		693BD5B117C1C8BA0039430B /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 693BD5AE17C1C8BA0039430B /* RadioButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		693BD5B517C1CE400039430B /* RadioButton-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5B317C1CE400039430B /* RadioButton-Selected.png */; };
 		693BD5B617C1CE400039430B /* RadioButton-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5B417C1CE400039430B /* RadioButton-Unselected.png */; };
+		693BD5BA17C1E93B0039430B /* RKDiscountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 693BD5B817C1E93B0039430B /* RKDiscountViewController.m */; };
+		693BD5BB17C1E93B0039430B /* RKDiscountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5B917C1E93B0039430B /* RKDiscountViewController.xib */; };
+		693BD5C517C1F8CF0039430B /* home_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5C317C1F8CF0039430B /* home_line@2x.png */; };
+		693BD5C717C1FC0E0039430B /* home_lohas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5C617C1FC0E0039430B /* home_lohas@2x.png */; };
+		693BD5C917C1FF2C0039430B /* home_discount@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5C817C1FF2C0039430B /* home_discount@2x.png */; };
+		693BD5CB17C200660039430B /* home_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5CA17C200660039430B /* home_pic@2x.png */; };
+		693BD5CD17C201480039430B /* home_certification@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5CC17C201480039430B /* home_certification@2x.png */; };
+		693BD5D017C202920039430B /* home_join@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5CE17C202920039430B /* home_join@2x.png */; };
+		693BD5D117C202920039430B /* home_mylohas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5CF17C202920039430B /* home_mylohas@2x.png */; };
+		693BD5DA17C313A80039430B /* RKDiscountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 693BD5D817C313A80039430B /* RKDiscountCell.m */; };
+		693BD5DB17C313A80039430B /* RKDiscountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5D917C313A80039430B /* RKDiscountCell.xib */; };
+		693BD5DE17C3229C0039430B /* RKCertificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 693BD5DD17C3229C0039430B /* RKCertificationCell.m */; };
+		693BD5E017C322AF0039430B /* RKCertificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5DF17C322AF0039430B /* RKCertificationCell.xib */; };
+		693BD5E417C322FA0039430B /* RKCertifitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 693BD5E217C322FA0039430B /* RKCertifitionViewController.m */; };
+		693BD5E517C322FA0039430B /* RKCertifitionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5E317C322FA0039430B /* RKCertifitionViewController.xib */; };
+		693BD5EB17C3498D0039430B /* trade.plist in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5EA17C3498D0039430B /* trade.plist */; };
 		69452F8E17BC98A0000B6674 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69452F8D17BC98A0000B6674 /* UIKit.framework */; };
 		69452F9017BC98A0000B6674 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69452F8F17BC98A0000B6674 /* Foundation.framework */; };
 		69452F9217BC98A0000B6674 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69452F9117BC98A0000B6674 /* CoreGraphics.framework */; };
@@ -102,6 +118,26 @@
 		693BD5AE17C1C8BA0039430B /* RadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioButton.m; sourceTree = "<group>"; };
 		693BD5B317C1CE400039430B /* RadioButton-Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Selected.png"; sourceTree = "<group>"; };
 		693BD5B417C1CE400039430B /* RadioButton-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Unselected.png"; sourceTree = "<group>"; };
+		693BD5B717C1E93B0039430B /* RKDiscountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKDiscountViewController.h; sourceTree = "<group>"; };
+		693BD5B817C1E93B0039430B /* RKDiscountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKDiscountViewController.m; sourceTree = "<group>"; };
+		693BD5B917C1E93B0039430B /* RKDiscountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKDiscountViewController.xib; sourceTree = "<group>"; };
+		693BD5C317C1F8CF0039430B /* home_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_line@2x.png"; sourceTree = "<group>"; };
+		693BD5C617C1FC0E0039430B /* home_lohas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_lohas@2x.png"; sourceTree = "<group>"; };
+		693BD5C817C1FF2C0039430B /* home_discount@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_discount@2x.png"; sourceTree = "<group>"; };
+		693BD5CA17C200660039430B /* home_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_pic@2x.png"; sourceTree = "<group>"; };
+		693BD5CC17C201480039430B /* home_certification@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_certification@2x.png"; sourceTree = "<group>"; };
+		693BD5CE17C202920039430B /* home_join@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_join@2x.png"; sourceTree = "<group>"; };
+		693BD5CF17C202920039430B /* home_mylohas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_mylohas@2x.png"; sourceTree = "<group>"; };
+		693BD5D717C313A80039430B /* RKDiscountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKDiscountCell.h; sourceTree = "<group>"; };
+		693BD5D817C313A80039430B /* RKDiscountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKDiscountCell.m; sourceTree = "<group>"; };
+		693BD5D917C313A80039430B /* RKDiscountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKDiscountCell.xib; sourceTree = "<group>"; };
+		693BD5DC17C3229C0039430B /* RKCertificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKCertificationCell.h; sourceTree = "<group>"; };
+		693BD5DD17C3229C0039430B /* RKCertificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKCertificationCell.m; sourceTree = "<group>"; };
+		693BD5DF17C322AF0039430B /* RKCertificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKCertificationCell.xib; sourceTree = "<group>"; };
+		693BD5E117C322F90039430B /* RKCertifitionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKCertifitionViewController.h; sourceTree = "<group>"; };
+		693BD5E217C322FA0039430B /* RKCertifitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKCertifitionViewController.m; sourceTree = "<group>"; };
+		693BD5E317C322FA0039430B /* RKCertifitionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKCertifitionViewController.xib; sourceTree = "<group>"; };
+		693BD5EA17C3498D0039430B /* trade.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = trade.plist; sourceTree = "<group>"; };
 		69452F8A17BC98A0000B6674 /* Lohas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lohas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69452F8D17BC98A0000B6674 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		69452F8F17BC98A0000B6674 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -287,6 +323,35 @@
 				693BD5B417C1CE400039430B /* RadioButton-Unselected.png */,
 			);
 			path = RDButton;
+			sourceTree = "<group>";
+		};
+		693BD5C117C1F8CF0039430B /* image */ = {
+			isa = PBXGroup;
+			children = (
+				693BD5C217C1F8CF0039430B /* homeImg */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		693BD5C217C1F8CF0039430B /* homeImg */ = {
+			isa = PBXGroup;
+			children = (
+				693BD5C317C1F8CF0039430B /* home_line@2x.png */,
+				693BD5C617C1FC0E0039430B /* home_lohas@2x.png */,
+				693BD5C817C1FF2C0039430B /* home_discount@2x.png */,
+				693BD5CA17C200660039430B /* home_pic@2x.png */,
+				693BD5CC17C201480039430B /* home_certification@2x.png */,
+				693BD5CE17C202920039430B /* home_join@2x.png */,
+				693BD5CF17C202920039430B /* home_mylohas@2x.png */,
+			);
+			path = homeImg;
+			sourceTree = "<group>";
+		};
+		693BD5C417C1F8CF0039430B /* sound */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = sound;
 			sourceTree = "<group>";
 		};
 		69452F8117BC98A0000B6674 = {
@@ -541,6 +606,9 @@
 		6945300217BC9961000B6674 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				693BD5C117C1F8CF0039430B /* image */,
+				693BD5C417C1F8CF0039430B /* sound */,
+				693BD5EA17C3498D0039430B /* trade.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -559,6 +627,12 @@
 		6945304017BCA6AD000B6674 /* CertificationalView */ = {
 			isa = PBXGroup;
 			children = (
+				693BD5DC17C3229C0039430B /* RKCertificationCell.h */,
+				693BD5DD17C3229C0039430B /* RKCertificationCell.m */,
+				693BD5DF17C322AF0039430B /* RKCertificationCell.xib */,
+				693BD5E117C322F90039430B /* RKCertifitionViewController.h */,
+				693BD5E217C322FA0039430B /* RKCertifitionViewController.m */,
+				693BD5E317C322FA0039430B /* RKCertifitionViewController.xib */,
 			);
 			path = CertificationalView;
 			sourceTree = "<group>";
@@ -566,6 +640,12 @@
 		6945304117BCA6AD000B6674 /* DiscountView */ = {
 			isa = PBXGroup;
 			children = (
+				693BD5B717C1E93B0039430B /* RKDiscountViewController.h */,
+				693BD5B817C1E93B0039430B /* RKDiscountViewController.m */,
+				693BD5B917C1E93B0039430B /* RKDiscountViewController.xib */,
+				693BD5D717C313A80039430B /* RKDiscountCell.h */,
+				693BD5D817C313A80039430B /* RKDiscountCell.m */,
+				693BD5D917C313A80039430B /* RKDiscountCell.xib */,
 			);
 			path = DiscountView;
 			sourceTree = "<group>";
@@ -712,6 +792,18 @@
 				693BD5AA17C1C0AE0039430B /* FlatDatePicker-Icon-Close@2x.png in Resources */,
 				693BD5B517C1CE400039430B /* RadioButton-Selected.png in Resources */,
 				693BD5B617C1CE400039430B /* RadioButton-Unselected.png in Resources */,
+				693BD5BB17C1E93B0039430B /* RKDiscountViewController.xib in Resources */,
+				693BD5C517C1F8CF0039430B /* home_line@2x.png in Resources */,
+				693BD5C717C1FC0E0039430B /* home_lohas@2x.png in Resources */,
+				693BD5C917C1FF2C0039430B /* home_discount@2x.png in Resources */,
+				693BD5CB17C200660039430B /* home_pic@2x.png in Resources */,
+				693BD5CD17C201480039430B /* home_certification@2x.png in Resources */,
+				693BD5D017C202920039430B /* home_join@2x.png in Resources */,
+				693BD5D117C202920039430B /* home_mylohas@2x.png in Resources */,
+				693BD5DB17C313A80039430B /* RKDiscountCell.xib in Resources */,
+				693BD5E017C322AF0039430B /* RKCertificationCell.xib in Resources */,
+				693BD5E517C322FA0039430B /* RKCertifitionViewController.xib in Resources */,
+				693BD5EB17C3498D0039430B /* trade.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,6 +864,10 @@
 				693BD59F17C1B3EE0039430B /* NIDropDown.m in Sources */,
 				693BD5AB17C1C0AE0039430B /* FlatDatePicker.m in Sources */,
 				693BD5B117C1C8BA0039430B /* RadioButton.m in Sources */,
+				693BD5BA17C1E93B0039430B /* RKDiscountViewController.m in Sources */,
+				693BD5DA17C313A80039430B /* RKDiscountCell.m in Sources */,
+				693BD5DE17C3229C0039430B /* RKCertificationCell.m in Sources */,
+				693BD5E417C322FA0039430B /* RKCertifitionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

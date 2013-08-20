@@ -21,6 +21,9 @@
 }
 
 + (NSString *)operaterStr:(NSString *)str;
++ (NSString *)pathForImage:(NSString *)fname;
++ (NSString *)pathForPlist:(NSString *)fname;
++ (NSString *)getKey;
 
 //new code 12.01 ???==>about cancel request
 + (void)cancelAllRequestWithQueue:(ASINetworkQueue *)queue;
@@ -30,5 +33,6 @@
 + (BOOL)requestExistsWithQueue:(ASINetworkQueue *)queue WithDictionary:(NSDictionary *)dictionary;
 + (void)cancelAllRequestOfAllQueue;
 + (void)showNetWorokingAlertWithMessage :(NSString *)msg;
++ (void)showNetWorokingAlertWithMessageWithSucc :(NSString *)msg;
 
 @end

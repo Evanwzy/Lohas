@@ -14,3 +14,5 @@
 #define RegisterUrl [NSString stringWithFormat:@"%@/ApiLogin/register", SERVER_URL]
 #define CheckAccountUrl [NSString stringWithFormat:@"%@/ApiLogin/sendSHP", SERVER_URL]
 #define LoginUrl [NSString stringWithFormat:@"%@/ApiLogin/login", SERVER_URL]
+#define joinUrl [NSString stringWithFormat:@"%@/ApiJoin/join", SERVER_URL]
+#define getCertifitionUrl [NSString stringWithFormat:@"%@/ApiJoin/get_result", SERVER_URL]
