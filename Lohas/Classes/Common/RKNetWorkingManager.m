@@ -16,7 +16,7 @@
 @synthesize queue;
 @synthesize singleQueue;
 
-@synthesize registerDelagate, loginDelagate, joinLohasDelegate;
+@synthesize registerDelagate, loginDelagate, joinLohasDelegate, certificationDataDelegate, discountDelegate, detailDelegate;
 
 #pragma - singleton
 
@@ -54,7 +54,7 @@ static RKNetWorkingManager *_networkRequestManager;
 }
 
 - (void)registerFinished :(ASIHTTPRequest *)request {
-    NSLog(@"%@", [request responseString]);
+//    NSLog(@"%@", [request responseString]);
     NSDictionary *data =[[request responseString] JSONValue];
     if ([[data objectForKey:@"status"] isEqual:@"0"]) {
         [registerDelagate getRegisterResult];
@@ -80,12 +80,30 @@ static RKNetWorkingManager *_networkRequestManager;
     [queue addOperation:request];
 }
 
+- (void)checkStoreWithAccount:(NSString *)accountStr {
+    [self checkQueue];
+    
+    NSURL *url =[NSURL URLWithString:CheckStoreAccountUrl];
+    
+    ASIFormDataRequest *request =[ASIFormDataRequest requestWithURL:url];
+    [request addPostValue:accountStr forKey:@"store_phone"];
+    [request addPostValue:[Common getKey] forKey:@"user_key"];
+    [request setDelegate:self];
+    [request setDidFinishSelector:@selector(checkAccountFinished:)];
+    [request setDidFailSelector:@selector(commonRequestQueryDataFailed:)];
+    
+    request.timeOutSeconds=10;
+    
+    [queue addOperation:request];
+}
+
 - (void)checkAccountFinished :(ASIHTTPRequest *)request {
-    NSLog(@"%@", [request responseString]);
+//    NSLog(@"%@", [request responseString]);
     NSDictionary *data =[[request responseString] JSONValue];
     if ([[data objectForKey:@"status"] isEqual:@"0"]) {
     } else {
         [Common showNetWorokingAlertWithMessage:[data objectForKey:@"msg"]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ENDREFRASH" object:nil];
     }
 }
 
@@ -108,7 +126,7 @@ static RKNetWorkingManager *_networkRequestManager;
 }
 
 - (void)loginFinished :(ASIHTTPRequest *)request {
-    NSLog(@"%@", [request responseString]);
+//    NSLog(@"%@", [request responseString]);
     NSDictionary *data =[[request responseString] JSONValue];
     if ([[data objectForKey:@"status"] isEqual:@"0"]) {
         [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"IsLogined"];
@@ -116,11 +134,12 @@ static RKNetWorkingManager *_networkRequestManager;
         [loginDelagate getLoginResult];
     } else {
         [Common showNetWorokingAlertWithMessage:[data objectForKey:@"msg"]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ENDREFRASH" object:nil];
     }
 }
 
 //join Lohas
--(void)joinLohasWithName:(NSString *)nameStr Account:(NSString *)accountStr Kind:(NSString *)kindStr Site:(NSString *)site Latitude:(NSString *)latitudeStr Longitude:(NSString *)longitudeStr Address:(NSString *)addressStr Doorphoto:(UIImage *)doorImg Date:(NSString *)dateStr ShopKind:(NSString *)shopkind Certificatephoto:(UIImage *)certificateImg PeopleInCharge:(NSString *)peoInCharge Ctiy:(NSString *)city {
+-(void)joinLohasWithName:(NSString *)nameStr Account:(NSString *)accountStr ownerAccount:(NSString *)ownerAcc Verify:(NSString *)verifyStr Kind:(NSString *)kindStr Site:(NSString *)site Latitude:(NSString *)latitudeStr Longitude:(NSString *)longitudeStr Address:(NSString *)addressStr Doorphoto:(UIImage *)doorImg Date:(NSString *)dateStr ShopKind:(NSString *)shopkind Certificatephoto:(UIImage *)certificateImg PeopleInCharge:(NSString *)peoInCharge Ctiy:(NSString *)city {
     [self checkQueue];
     
     NSURL *url =[NSURL URLWithString:joinUrl];
@@ -130,6 +149,8 @@ static RKNetWorkingManager *_networkRequestManager;
     ASIFormDataRequest *request =[ASIFormDataRequest requestWithURL:url];
     [request addPostValue:nameStr forKey:@"store_name"];
     [request addPostValue:accountStr forKey:@"account"];
+    [request addPostValue:ownerAcc forKey:@"store_phone"];
+    [request addPostValue:verifyStr forKey:@"verify"];
     [request addPostValue:kindStr forKey:@"trade"];
     [request addPostValue:site forKey:@"estate"];
     [request addPostValue:latitudeStr forKey:@"lat"];
@@ -154,12 +175,16 @@ static RKNetWorkingManager *_networkRequestManager;
 }
 
 - (void)joinLohasFinished:(ASIHTTPRequest *)request {
-    NSLog(@"%@", [request responseString]);
+//    NSLog(@"%@", [request responseString]);
     NSDictionary *data =[[request responseString] JSONValue];
     if ([[data objectForKey:@"status"] isEqual:@"0"]) {
+        [Common showNetWorokingAlertWithMessageWithSucc:[data objectForKey:@"msg"]];           
         [joinLohasDelegate getjoinLohasResult];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"COMMITENABLE" object:nil];
     } else {
         [Common showNetWorokingAlertWithMessage:[data objectForKey:@"msg"]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ENDREFRASH" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"COMMITENABLE" object:nil];
     }
 }
 
@@ -167,15 +192,10 @@ static RKNetWorkingManager *_networkRequestManager;
 - (void) getCertifitionDataWithLatitude:(NSString *)latitude Longitude:(NSString *)longitude distance:(NSString *)distance kind:(NSString *)kind {
     [self checkQueue];
     
-    latitude =@"31.241402";
-    longitude =@"121.505665";
-    distance =@"50";
-    kind =@"1";
-    
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/&lng=%@&lat=%@&distance=%@&trade=%@", getCertifitionUrl, longitude, latitude, distance, kind]];
     
-    ASIHTTPRequest *request =[ASIFormDataRequest requestWithURL:url];
+    ASIHTTPRequest *request =[ASIHTTPRequest requestWithURL:url];
     
     [request setDelegate:self];
     [request setDidFinishSelector:@selector(getCertifitionDataFinished:)];
@@ -185,8 +205,110 @@ static RKNetWorkingManager *_networkRequestManager;
 }
 
 - (void) getCertifitionDataFinished :(ASIHTTPRequest *)request {
-    NSLog(@"%@", [request responseString]);
+//    NSLog(@"%@", [request responseString]);
+    NSDictionary *data =[[request responseString] JSONValue];
+    if ([[data objectForKey:@"status"] isEqual:@"0"]) {
+        [certificationDataDelegate certificationData:[data objectForKey:@"data"]];
+    } else {
+        [Common showNetWorokingAlertWithMessage:[data objectForKey:@"msg"]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ENDREFRASH" object:nil];
+    }
 }
+
+//get city discount data
+- (void) getDiscountData:(NSString *)cityName {
+    [self checkQueue];
+    
+    NSURL *url = [NSURL URLWithString:discountUrl];
+    
+    ASIFormDataRequest *request =[ASIFormDataRequest requestWithURL:url];
+    
+    [request addPostValue:cityName forKey:@"city"];
+    [request setDelegate:self];
+    [request setDidFinishSelector:@selector(getDiscountDataFinished:)];
+    [request setDidFailSelector:@selector(commonRequestQueryDataFailed:)];
+    [queue addOperation:request];
+}
+
+
+- (void) getDiscountDataFinished :(ASIHTTPRequest *)request {
+    //    NSLog(@"%@", [request responseString]);
+    NSDictionary *data =[[request responseString] JSONValue];
+    if ([[data objectForKey:@"status"] isEqual:@"0"]) {
+        NSArray *arr =[data objectForKey:@"data"];
+        [discountDelegate discountData:arr];
+    } else {
+        [Common showNetWorokingAlertWithMessage:[data objectForKey:@"msg"]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ENDREFRASH" object:nil];
+    }
+}
+
+//get detail data
+-(void)getdetailData:(NSString *)shopID {
+    [self checkQueue];
+    
+    NSURL *url =[NSURL URLWithString:shopInfoUrl];
+    
+    ASIFormDataRequest *request =[ASIFormDataRequest requestWithURL:url];
+    [request addPostValue:shopID forKey:@"id"];
+    [request addPostValue:[Common getKey] forKey:@"user_key"];
+    
+    [request setDelegate:self];
+    [request setDidFinishSelector:@selector(joinLohasFinished:)];
+    [request setDidFailSelector:@selector(commonRequestQueryDataFailed:)];
+    
+    request.timeOutSeconds=10;
+    
+    [queue addOperation:request];
+    
+}
+
+- (void)getdetailDataFinished:(ASIHTTPRequest *)request {
+    //    NSLog(@"%@", [request responseString]);
+    NSDictionary *data =[[request responseString] JSONValue];
+    if ([[data objectForKey:@"status"] isEqual:@"0"]) {
+        [detailDelegate detailData:[[data objectForKey:@"data"] objectAtIndex:0]];
+    } else {
+        [Common showNetWorokingAlertWithMessage:[data objectForKey:@"msg"]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ENDREFRASH" object:nil];
+    }
+}
+
+//-(void)netTest {
+//    [self checkQueue];
+//    
+//    NSURL *url =[NSURL URLWithString:@"http://192.168.1.103/lehuo/index.php?s=/ApiMessage/demo"];
+//    
+//    ASIHTTPRequest *request =[ASIHTTPRequest requestWithURL:url];
+//    
+//    [request setDelegate:self];
+//    [request setDidFinishSelector:@selector(testFinished:)];
+//    [request setDidFailSelector:@selector(commonRequestQueryDataFailed:)];
+//    [queue addOperation:request];
+//    
+//}
+//
+//- (void) testFinished :(ASIHTTPRequest *)request {
+//    //    NSLog(@"%@", [request responseString]);
+//    NSMutableDictionary *dataDict =[[NSMutableDictionary alloc]init];
+//    NSArray *data =[[request responseString] JSONValue];
+//    
+//    for (int i =0; i<[data count]; i++) {
+//        NSDictionary *dict =[data objectAtIndex:i];
+//        [dataDict setValue:[dict objectForKey:@"name"] forKey:[dict objectForKey:@"id"]];
+//    }
+//    
+//    NSArray *doc = NSSearchPathForDirectoriesInDomains(
+//                                                       
+//                                                       NSDocumentDirectory, NSUserDomainMask, YES);
+//    
+//    NSString *docPath = [ doc objectAtIndex:0 ];
+//    
+//    NSString *docLocation=[docPath
+//                           
+//                           stringByAppendingPathComponent:[NSString stringWithFormat:@"city.plist"]];
+//    [dataDict writeToFile:docLocation atomically:YES];
+//}
 
 #pragma mark - Common methods
 -(void)checkQueue{
@@ -198,6 +320,8 @@ static RKNetWorkingManager *_networkRequestManager;
         [queue go];
     }
 }
+
+
 
 -(void)checkSingleQueue{
     if (!singleQueue) {
@@ -230,12 +354,14 @@ static RKNetWorkingManager *_networkRequestManager;
     //
     //    //old code...
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@""
-                                                        message:@"本次更新失败，请检查网络"
+                                                        message:@"联网失败，请检查网络"
                                                        delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil];
     [alertView show];
     [alertView release];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ENDREFRASH" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"COMMITENABLE" object:nil];
     NSLog(@"query data error: %@", [request error]);
 }
 

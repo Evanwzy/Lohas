@@ -12,6 +12,7 @@
 #import "RKMyLohasViewController.h"
 #import "RKJoinViewController.h"
 #import "RKDiscountViewController.h"
+#import "RKCertifitionViewController.h"
 
 @interface RKHomeViewController ()
 
@@ -32,7 +33,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [Common cancelAllRequestOfAllQueue];
+    if ([CLLocationManager locationServicesEnabled]) {
+        locationManager =[[CLLocationManager alloc]init];
+        locationManager.delegate =self;
+        locationManager.distanceFilter =kCLDistanceFilterNone;
+        locationManager.desiredAccuracy =kCLLocationAccuracyBestForNavigation;
+        [locationManager startUpdatingLocation];
+        NSLog(@"GPS开始");
+    }else {
+        [Common showNetWorokingAlertWithMessage:@"GPS不可用，请检查GPS状态。"];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -61,9 +72,58 @@
         [self.cityBtn setTitle:city forState:UIControlStateNormal];
     }else {
         [self.view addSubview:_view_ip4];
-        [self.cityBtn setTitle:city forState:UIControlStateNormal];
+        [self.cityBtn2 setTitle:city forState:UIControlStateNormal];
     }
+    
+//    [[RKNetWorkingManager sharedManager] netTest];
 }
+
+#pragma mark - GPS Location Delegate
+-(void)locationManager:(CLLocationManager *)manager
+   didUpdateToLocation:(CLLocation *)newLocation
+          fromLocation:(CLLocation *)oldLocation
+{
+    [locationManager stopUpdatingLocation];
+    ;///火星GPS
+    CLLocationCoordinate2D thisLocation =newLocation.coordinate;
+    thisLocation = [self zzTransGPS:thisLocation];
+    
+    NSArray *arrValue =[NSArray arrayWithObjects:[NSNumber numberWithFloat:thisLocation.latitude], [NSNumber numberWithFloat:thisLocation.longitude],nil];
+    NSDictionary *dict =[NSDictionary dictionaryWithObjects:arrValue forKeys:@[@"latitude", @"longitude"]];
+    [[NSUserDefaults standardUserDefaults] setValue:dict forKey:@"location"];
+}
+
+// 定位失败时调用
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error {
+    [Common showNetWorokingAlertWithMessage:@"定位失败！"];
+}
+
+-(CLLocationCoordinate2D)zzTransGPS:(CLLocationCoordinate2D)yGps
+{
+    int TenLat=0;
+    int TenLog=0;
+    TenLat = (int)(yGps.latitude*10);
+    TenLog = (int)(yGps.longitude*10);
+    NSString *sql = [[NSString alloc]initWithFormat:@"select offLat,offLog from gpsT where lat=%d and log = %d",TenLat,TenLog];
+    sqlite3_stmt* stmtL = [m_sqlite NSRunSql:sql];
+    int offLat=0;
+    int offLog=0;
+    while (sqlite3_step(stmtL)==SQLITE_ROW)
+    {
+        offLat = sqlite3_column_int(stmtL, 0);
+        offLog = sqlite3_column_int(stmtL, 1);
+        
+    }
+    
+    yGps.latitude = yGps.latitude+offLat*0.0001;
+    yGps.longitude = yGps.longitude + offLog*0.0001;
+    return yGps;
+    
+    
+}
+
+#pragma mark - button action
 
 - (IBAction)cityBtnPressed:(id)sender {
     [Common cancelAllRequestOfAllQueue];
@@ -75,6 +135,11 @@
 - (IBAction)discountBtnPressed:(id)sender {
     [Common cancelAllRequestOfAllQueue];
     RKDiscountViewController *dvCtr =[[RKDiscountViewController alloc]init];
+    if (IS_IPHONE_5) {
+        dvCtr.city =self.cityBtn.titleLabel.text;
+    } else {
+        dvCtr.city =self.cityBtn2.titleLabel.text;
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"PUSHCONTROLLER" object:dvCtr];
 }
 
@@ -93,6 +158,12 @@
     RKMyLohasViewController *mvCtr =[[RKMyLohasViewController alloc]init];
     mvCtr.viewType =joinType;
     [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:mvCtr];
+}
+
+- (IBAction)certificationBtnPressed:(id)sender {
+    [Common cancelAllRequestOfAllQueue];
+    RKCertifitionViewController *cvCtr =[[RKCertifitionViewController alloc]init];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:cvCtr];
 }
 
 

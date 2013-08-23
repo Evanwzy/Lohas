@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
+#import "CSqlite.h"
 
 #import "Common.h"
 
-@interface RKHomeViewController : UIViewController
+@interface RKHomeViewController : UIViewController <CLLocationManagerDelegate> {
+    //GPS location
+    CLLocationManager *locationManager;
+    CSqlite *m_sqlite;
+}
 
 @property (strong, nonatomic) IBOutlet UIView *view_ip5;
 @property (strong, nonatomic) IBOutlet UIView *view_ip4;
@@ -23,6 +30,7 @@
 - (IBAction)discountBtnPressed:(id)sender;
 - (IBAction)myLohasBtnPressed:(id)sender;
 - (IBAction)joinBtnPressed:(id)sender;
+- (IBAction)certificationBtnPressed:(id)sender;
 
 
 @end

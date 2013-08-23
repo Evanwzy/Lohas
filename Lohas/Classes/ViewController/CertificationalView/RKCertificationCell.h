@@ -10,4 +10,10 @@
 
 @interface RKCertificationCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *storePic;
+@property (weak, nonatomic) IBOutlet UILabel *storeName;
+@property (weak, nonatomic) IBOutlet UILabel *priceLbl;
+@property (weak, nonatomic) IBOutlet UILabel *estateLbl;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLbl;
+
 @end

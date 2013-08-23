@@ -61,9 +61,13 @@ typedef enum {
 @property (nonatomic ,retain) NSDictionary *userDict;
 
 @property (weak, nonatomic) IBOutlet UITextField *nameText;
+@property (weak, nonatomic) IBOutlet UITextField *ownerText;
+@property (weak, nonatomic) IBOutlet UITextField *verifyText;
 @property (weak, nonatomic) IBOutlet UITextField *kindText;
 @property (weak, nonatomic) IBOutlet UITextField *siteText;
 @property (weak, nonatomic) IBOutlet UITextField *locationText;
+@property (weak, nonatomic) IBOutlet UITextField *addressText;
+
 @property (weak, nonatomic) IBOutlet UIButton       *doorPhotoBtn;
 @property (weak, nonatomic) IBOutlet UITextField *dateText;
 
@@ -72,7 +76,10 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet MKMapView *m_map;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UIButton *okBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *backImg;
+@property (weak, nonatomic) IBOutlet UIButton *checkBtn;
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
+@property (weak, nonatomic) IBOutlet UIButton *gpsBtn;
 
 @property int kindIndex;
 @property (nonatomic, retain) UIImage   *doorImage;
@@ -89,6 +96,7 @@ typedef enum {
 
 @property (strong, nonatomic) IBOutlet UIScrollView *viewSV;
 
+- (IBAction)checkBtnPressed:(id)sender;
 - (IBAction)commitBtnPressed:(id)sender;
 - (IBAction)kindBtnPressed:(id)sender;
 - (IBAction)dateBtnPressed:(id)sender;

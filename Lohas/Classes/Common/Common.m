@@ -38,6 +38,7 @@
     [alert show];
 }
 
+
 + (void)showNetWorokingAlertWithMessageWithSucc :(NSString *)msg {
     UIAlertView * alert =[[UIAlertView alloc]initWithTitle:@"成功" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];

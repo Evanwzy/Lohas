@@ -23,11 +23,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *pwdText_ip5;
 @property (weak, nonatomic) IBOutlet UITextField *nameText_ip5;
 @property (weak, nonatomic) IBOutlet UITextField *verifyText_ip5;
+@property (weak, nonatomic) IBOutlet UIButton *checkBtn_ip5;
 
 @property (weak, nonatomic) IBOutlet UITextField *accountText_ip4;
 @property (weak, nonatomic) IBOutlet UITextField *pwdText_ip4;
 @property (weak, nonatomic) IBOutlet UITextField *nameText_ip4;
 @property (weak, nonatomic) IBOutlet UITextField *verifyText_ip4;
+@property (weak, nonatomic) IBOutlet UIButton *checkBtn_ip4;
 
 - (IBAction)registerBtnPressed:(UIButton *)sender;
 

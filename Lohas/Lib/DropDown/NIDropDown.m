@@ -42,7 +42,10 @@
 //        table.layer.cornerRadius = 5;
         table.showsHorizontalScrollIndicator =NO;
         table.showsVerticalScrollIndicator =NO;
-        table.backgroundColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
+        table.backgroundColor = [UIColor colorWithRed:128.0/255.0
+                                                green:128.0/255.0
+                                                 blue:128.0/255.0
+                                                alpha:1.0];
         table.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         table.separatorColor = [UIColor grayColor];
         

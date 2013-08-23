@@ -28,6 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(buttonChange) name:@"COMMITENABLE" object:nil];
+    
     [self setupUI];
     
     //open SQLite
@@ -50,6 +52,8 @@
 }
 
 - (void)viewDidUnload {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"COMMITENABLE" object:nil];
+    
     [self setViewSV:nil];
     [self setDoorPhotoBtn:nil];
     [self setCertificateBtn:nil];
@@ -63,27 +67,35 @@
     [self setBackBtn:nil];
     [self setOkBtn:nil];
     [self setCommitBtn:nil];
+    [self setAddressText:nil];
+    [self setOwnerText:nil];
+    [self setCheckBtn:nil];
+    [self setVerifyText:nil];
+    [self setBackImg:nil];
+    [self setGpsBtn:nil];
     [super viewDidUnload];
 }
 
 
 #pragma mark - UI Setting
 - (void)setupUI {
-    self.titleLbl =[[UILabel alloc]initWithFrame:CGRectMake(0.0f, 44.0f, 320.0f, 44.0f)];
+    [self.okBtn setHidden:YES];
+    
+    self.titleLbl =[[UILabel alloc]initWithFrame:CGRectMake(0.0f, 52.0f, 320.0f, 44.0f)];
     self.titleLbl.text =@"申请加盟乐活代理商";
     self.titleLbl.textAlignment =UITextAlignmentCenter;
     self.titleLbl.font =[UIFont systemFontOfSize:17.0f];
     self.titleLbl.textColor =[UIColor lightGrayColor];
     self.titleLbl.backgroundColor =[UIColor whiteColor];
     
-    [self.viewSV setContentSize:CGSizeMake(320.0f, 840.0f)];
+    [self.viewSV setContentSize:CGSizeMake(320.0f, 1072.0f)];
     
     if (IS_IPHONE_5) {
-        [self.viewSV setFrame:CGRectMake(0.0f, 88.0f, 320.0f, 460.0f)];
-        [self.m_map setFrame:CGRectMake(0.0f, 44.0f, 320.0f, 504.0f)];
+        [self.viewSV setFrame:CGRectMake(0.0f, 96.0f, 320.0f, 452.0f)];
+        [self.m_map setFrame:CGRectMake(0.0f, 52.0f, 320.0f, 496.0f)];
     }else {
-        [self.viewSV setFrame:CGRectMake(0.0f, 88.0f, 320.0f, 372.0f)];
-        [self.m_map setFrame:CGRectMake(0.0f, 44.0f, 320.0f, 416.0f)];
+        [self.viewSV setFrame:CGRectMake(0.0f, 96.0f, 320.0f, 366.0f)];
+        [self.m_map setFrame:CGRectMake(0.0f, 52.0f, 320.0f, 408.0f)];
     }
     
     self.peopleInCharge =[self.userDict objectForKey:@"name"];
@@ -92,13 +104,12 @@
     RadioButton *rb1 = [[RadioButton alloc] initWithGroupId:@"shop kind" index:0];
     RadioButton *rb2 = [[RadioButton alloc] initWithGroupId:@"shop kind" index:1];
     
-    rb1.frame = CGRectMake(140,544,22,22);
-    rb2.frame = CGRectMake(230,544,22,22);
+    rb1.frame = CGRectMake(140,783,22,22);
+    rb2.frame = CGRectMake(230,783,22,22);
     
     [self.viewSV addSubview:rb1];
     [self.viewSV addSubview:rb2];
     
-    self.m_map.showsUserLocation =YES;
     [self.view addSubview:_m_map];
     [self.view addSubview:_titleLbl];
     [self.view addSubview:_viewSV];
@@ -112,7 +123,30 @@
 
 #pragma mark - button Action
 
+- (IBAction)checkBtnPressed:(id)sender {
+    if ([self.ownerText.text isEqualToString:@""]) {
+        UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"信息不完整" message:@"请输入完整信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+    } else {
+        [self checkAccountRequest:self.ownerText.text];
+        [self.checkBtn setTitle:@"请等待" forState:UIControlStateNormal];
+        self.checkBtn.userInteractionEnabled =NO;
+        [self performSelector:@selector(checkBtnUI) withObject:nil afterDelay:30.0f];
+    }
+}
+
+- (void)checkBtnUI{
+    if (IS_IPHONE_5) {
+        [self.checkBtn setTitle:@"获取验证" forState:UIControlStateNormal];
+        self.checkBtn.userInteractionEnabled =YES;
+    } else {
+        [self.checkBtn setTitle:@"请等待" forState:UIControlStateNormal];
+        self.checkBtn.userInteractionEnabled =YES;
+    }
+}
+
 - (IBAction)commitBtnPressed:(id)sender {
+    [self.commitBtn setTitle:@"正在申请" forState:UIControlStateNormal];
     self.commitBtn.userInteractionEnabled =NO;
     [Common cancelAllRequestOfAllQueue];
     [self joinLohasRequest];
@@ -164,6 +198,7 @@
         locationManager.desiredAccuracy =kCLLocationAccuracyBestForNavigation;
         [locationManager startUpdatingLocation];
         NSLog(@"GPS开始");
+        self.gpsBtn.userInteractionEnabled =NO;
     }else {
         [Common showNetWorokingAlertWithMessage:@"GPS不可用，请检查GPS状态。"];
     }
@@ -175,9 +210,12 @@
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationRepeatAutoreverses:NO];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];
-    [self.view exchangeSubviewAtIndex:2 withSubviewAtIndex:4];
+    [self.view exchangeSubviewAtIndex:7 withSubviewAtIndex:9];
     [UIView commitAnimations];
     [self.backBtn setHidden:NO];
+    [self.backImg setHidden:NO];
+    [self.okBtn setHidden:YES];
+    self.gpsBtn.userInteractionEnabled =YES;
 }
 
 #pragma mark - UIKeyboardViewController delegate methods
@@ -326,6 +364,7 @@
 // 定位失败时调用
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error {
+    self.gpsBtn.userInteractionEnabled =YES;
     [Common showNetWorokingAlertWithMessage:@"定位失败！"];
 }
 
@@ -350,17 +389,19 @@
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationRepeatAutoreverses:NO];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
-    [self.view exchangeSubviewAtIndex:2 withSubviewAtIndex:4];
+    [self.view exchangeSubviewAtIndex:7 withSubviewAtIndex:9];
     [UIView commitAnimations];
-    [self.backBtn setHidden:YES];
-    
-    self.locationText.text =[NSString stringWithFormat:@"%@%@%@", placemark.administrativeArea, placemark.subLocality, placemark.thoroughfare];
+    [self.backBtn setHidden:!self.backBtn.hidden];
+    [self.backImg setHidden:!self.backImg.hidden];
+    [self.okBtn setHidden:NO];
+    self.locationText.text =[NSString stringWithFormat:@"%@%@", placemark.administrativeArea, placemark.subLocality];
     self.city =placemark.administrativeArea ;
 }
 
 -  (void)reverseGeocoder:(MKReverseGeocoder *)geocoder
         didFailWithError:(NSError *)error
 {
+    self.gpsBtn.userInteractionEnabled =YES;
     NSLog(@"reverse geocoder fail!!");
 }
 
@@ -391,9 +432,10 @@
 -(void)SetMapPoint:(CLLocationCoordinate2D)myLocation
 {
     //添加大头针
-//    POI* m_poi = [[POI alloc]initWithCoords:myLocation];
-//    
-//    [self.m_map addAnnotation:m_poi];
+    POI* m_poi = [[POI alloc]initWithCoords:myLocation];
+    m_poi.title = @"当前位置";
+    
+    [self.m_map addAnnotation:m_poi];
     
     MKCoordinateRegion theRegion = { {0.0, 0.0 }, { 0.0, 0.0 } };
     theRegion.center=myLocation;
@@ -473,16 +515,35 @@
 #pragma mark - Upload User Info
 
 - (void) joinLohasRequest {
-    RKNetWorkingManager *manager =[RKNetWorkingManager sharedManager];
-    manager.joinLohasDelegate =self;
-    [manager joinLohasWithName:self.nameText.text Account:[self.userDict objectForKey:@"account"] Kind:[NSString stringWithFormat:@"%d", self.kindIndex] Site:self.siteText.text Latitude:self.latitude Longitude:self.longitude Address:self.locationText.text Doorphoto:self.doorImage Date:self.dateText.text ShopKind:self.shopKind Certificatephoto:self.certificateImage PeopleInCharge:self.peopleText.text Ctiy:self.city];
+    if (self.nameText.text.length !=0 && self.ownerText.text.length !=0 &&self.verifyText.text.length !=0 &&self.locationText.text.length !=0 &&self.addressText.text.length !=0 &&self.dateText.text.length !=0 &&self.peopleText.text.length !=0 &&self.doorImage !=nil &&self.certificateImage !=nil &&self.shopKind !=0) {
+        [Common cancelAllRequestOfAllQueue];
+        RKNetWorkingManager *manager =[RKNetWorkingManager sharedManager];
+        manager.joinLohasDelegate =self;
+        
+        [manager joinLohasWithName:self.nameText.text Account:[self.userDict objectForKey:@"account"] ownerAccount:self.ownerText.text Verify:self.verifyText.text Kind:[NSString stringWithFormat:@"%d", self.kindIndex] Site:self.siteText.text Latitude:self.latitude Longitude:self.longitude Address:[self.locationText.text stringByAppendingString:self.addressText.text] Doorphoto:self.doorImage Date:self.dateText.text ShopKind:self.shopKind Certificatephoto:self.certificateImage PeopleInCharge:self.peopleText.text Ctiy:self.city];
+    }else {
+        self.commitBtn.userInteractionEnabled =YES;
+        [self.commitBtn setTitle:@"申请" forState:UIControlStateNormal];
+        
+        UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"信息不完整" message:@"请输入完整信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+    }
 }
 
 -(void)getjoinLohasResult {
     [[NSNotificationCenter defaultCenter]postNotificationName:@"POPTOCONTROLLER" object:nil];
 }
 
+- (void)checkAccountRequest:(NSString *)accountStr {
+    [Common cancelAllRequestOfAllQueue];
+    RKNetWorkingManager *manager =[RKNetWorkingManager sharedManager];
+    [manager checkStoreWithAccount:accountStr];
+}
 
+- (void) buttonChange {
+    [self.commitBtn setTitle:@"提交" forState:UIControlStateNormal];
+    self.commitBtn.userInteractionEnabled =YES;
+}
 
 @end
 
@@ -503,5 +564,6 @@
     return self;
     
 }
+
 
 @end

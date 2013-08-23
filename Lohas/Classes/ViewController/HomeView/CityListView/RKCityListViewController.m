@@ -29,14 +29,12 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationController.navigationBarHidden =YES;
     
-    NSArray *aArr =[NSArray arrayWithObjects:@"安庆", @"安康", nil];
-    NSArray *bArr =[NSArray arrayWithObjects:@"北京", @"包头", nil];
-    NSArray *cArr =[NSArray arrayWithObjects:@"成都", @"常州", nil];
-    NSArray *dArr =[NSArray arrayWithObjects:@"大连", @"丹东", nil];
-    NSArray *sArr =[NSArray arrayWithObjects:@"上海", @"深圳", nil];
+    NSArray *bArr =[NSArray arrayWithObjects:@"北京市", nil];
+    NSArray *gArr =[NSArray arrayWithObjects:@"广州市", nil];
+    NSArray *sArr =[NSArray arrayWithObjects:@"上海市", @"深圳市", nil];
     
-    _valueArr =[[NSArray alloc]initWithObjects:aArr, bArr, cArr, dArr, sArr, nil];
-    _keyArr =[[NSArray alloc]initWithObjects:@"a", @"b", @"c", @"d", @"s", nil];
+    _valueArr =[[NSArray alloc]initWithObjects:bArr, gArr, sArr, nil];
+    _keyArr =[[NSArray alloc]initWithObjects:@"b", @"g", @"s", nil];
     
     _cityDict =[[NSDictionary alloc]initWithObjects:_valueArr forKeys:_keyArr];
     
@@ -57,6 +55,7 @@
     [super viewDidUnload];
 }
 - (IBAction)backBtn:(UIButton *)sender {
+    [Common cancelAllRequestOfAllQueue];
     [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
@@ -74,9 +73,9 @@
     return [[_cityDict allKeys] count];
 }
 
--(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return _keyArr;
-}
+//-(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+//    return _keyArr;
+//}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell =[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];

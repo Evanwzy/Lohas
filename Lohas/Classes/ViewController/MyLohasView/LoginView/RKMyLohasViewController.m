@@ -109,7 +109,7 @@
 
 - (IBAction)loginOutBtn:(id)sender {
     [[NSUserDefaults standardUserDefaults] setValue:@"0" forKey:@"IsLogined"];
-    [self setupUI];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"POPTOROOTCONTROLLER" object:nil];
 }
 
 

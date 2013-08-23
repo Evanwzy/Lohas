@@ -20,6 +20,7 @@
     
     //set IsLogined Value
     [[NSUserDefaults standardUserDefaults] setValue:@"0" forKey:@"IsLogined"];
+    [[NSUserDefaults standardUserDefaults]setValue:@"深圳市" forKey:@"city"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

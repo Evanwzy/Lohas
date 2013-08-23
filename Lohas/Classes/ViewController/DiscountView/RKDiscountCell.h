@@ -10,4 +10,5 @@
 
 @interface RKDiscountCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *infoImage;
 @end

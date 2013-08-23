@@ -56,6 +56,8 @@
     [self setNameText_ip4:nil];
     [self setVerifyText_ip5:nil];
     [self setVerifyText_ip4:nil];
+    [self setCheckBtn_ip4:nil];
+    [self setCheckBtn_ip5:nil];
     [super viewDidUnload];
 }
 
@@ -93,37 +95,52 @@
 
 - (IBAction)checkBtnPressed:(id)sender {
     if (IS_IPHONE_5) {
-        if ([self.accountText_ip5.text isEqualToString:@""]) {
+        if (self.accountText_ip5.text.length ==0) {
             UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"信息不完整" message:@"请输入完整信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
         } else {
             [self checkAccountRequest:self.accountText_ip5.text];
+            [self.checkBtn_ip5 setTitle:@"请等待" forState:UIControlStateNormal];
+            self.checkBtn_ip5.userInteractionEnabled =NO;
+            [self performSelector:@selector(checkBtnUI) withObject:nil afterDelay:30.0f];
         }
     } else {
-        if ([self.accountText_ip4.text isEqualToString:@""]) {
+        if (self.accountText_ip4.text.length ==0) {
             UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"信息不完整" message:@"请输入完整信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
         } else {
             [self checkAccountRequest:self.accountText_ip4.text];
+            [self.checkBtn_ip4 setTitle:@"请等待" forState:UIControlStateNormal];
+            self.checkBtn_ip4.userInteractionEnabled =NO;
+            [self performSelector:@selector(checkBtnUI) withObject:nil afterDelay:30.0f];
         }
     }
 }
 
+- (void)checkBtnUI{
+    if (IS_IPHONE_5) {
+        [self.checkBtn_ip5 setTitle:@"获取验证" forState:UIControlStateNormal];
+        self.checkBtn_ip5.userInteractionEnabled =YES;
+    } else {
+        [self.checkBtn_ip5 setTitle:@"获取验证" forState:UIControlStateNormal];
+        self.checkBtn_ip5.userInteractionEnabled =YES;
+    }
+}
 
 #pragma mark - Http Request Method
 
 - (void)registerRequest:(NSString *)accountStr :(NSString *)pwdStr :(NSString *)nameStr :(NSString *)verifyStr{
-    if (IS_IPHONE_5) {
-        self.accountText_ip5.text =@"";
-        self.pwdText_ip5.text =@"";
-        self.nameText_ip5.text =@"";
-        self.verifyText_ip5.text =@"";
-    } else {
-        self.accountText_ip4.text =@"";
-        self.pwdText_ip4.text =@"";
-        self.nameText_ip4.text =@"";
-        self.verifyText_ip4.text =@"";
-    }
+//    if (IS_IPHONE_5) {
+//        self.accountText_ip5.text =@"";
+//        self.pwdText_ip5.text =@"";
+//        self.nameText_ip5.text =@"";
+//        self.verifyText_ip5.text =@"";
+//    } else {
+//        self.accountText_ip4.text =@"";
+//        self.pwdText_ip4.text =@"";
+//        self.nameText_ip4.text =@"";
+//        self.verifyText_ip4.text =@"";
+//    }
     [Common cancelAllRequestOfAllQueue];
     RKNetWorkingManager *manager =[RKNetWorkingManager sharedManager];
     manager.registerDelagate =self;
@@ -133,7 +150,6 @@
 - (void)checkAccountRequest:(NSString *)accountStr {
     [Common cancelAllRequestOfAllQueue];
     RKNetWorkingManager *manager =[RKNetWorkingManager sharedManager];
-    manager.registerDelagate =self;
     [manager checkWithAccount:accountStr];
 }
 

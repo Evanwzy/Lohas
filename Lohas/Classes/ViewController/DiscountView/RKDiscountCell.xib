@@ -35,19 +35,33 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
+					<object class="IBUIImageView" id="146859565">
+						<reference key="NSNextResponder" ref="823971476"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrameSize">{320, 106}</string>
+						<reference key="NSSuperview" ref="823971476"/>
+						<reference key="NSNextKeyView" ref="951238390"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">discount_cellBg@2x.png</string>
+						</object>
+					</object>
 					<object class="IBUIImageView" id="951238390">
 						<reference key="NSNextResponder" ref="823971476"/>
-						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{0, 5}, {320, 120}}</string>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{15, 12}, {290, 86}}</string>
 						<reference key="NSSuperview" ref="823971476"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{320, 130}</string>
+				<string key="NSFrameSize">{320, 106}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSNextKeyView" ref="951238390"/>
+				<reference key="NSNextKeyView" ref="146859565"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -64,7 +78,16 @@
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
-			<array class="NSMutableArray" key="connectionRecords"/>
+			<array class="NSMutableArray" key="connectionRecords">
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">infoImage</string>
+						<reference key="source" ref="823971476"/>
+						<reference key="destination" ref="951238390"/>
+					</object>
+					<int key="connectionID">8</int>
+				</object>
+			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
 					<object class="IBObjectRecord">
@@ -88,6 +111,7 @@
 						<int key="objectID">2</int>
 						<reference key="object" ref="823971476"/>
 						<array class="NSMutableArray" key="children">
+							<reference ref="146859565"/>
 							<reference ref="951238390"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -95,6 +119,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">7</int>
 						<reference key="object" ref="951238390"/>
+						<reference key="parent" ref="823971476"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">9</int>
+						<reference key="object" ref="146859565"/>
 						<reference key="parent" ref="823971476"/>
 					</object>
 				</array>
@@ -106,18 +135,23 @@
 				<string key="2.CustomClassName">RKDiscountCell</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">7</int>
+			<int key="maxID">9</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">discount_cellBg@2x.png</string>
+			<string key="NS.object.0">{640, 212}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>
