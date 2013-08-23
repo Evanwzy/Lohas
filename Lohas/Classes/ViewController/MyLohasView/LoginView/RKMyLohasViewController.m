@@ -74,7 +74,7 @@
                 NSArray *msgArray =[userInfo objectForKey:@"system_message"];
                 for (int i =0; i<[msgArray count]; i++) {
                     NSDictionary *d =[msgArray objectAtIndex:i];
-                    self.infoText_ip5.text =[self.infoText_ip5.text stringByAppendingString:[d objectForKey:@"content"]];
+                    self.infoText_ip5.text =[self.infoText_ip5.text stringByAppendingFormat:@"%@\n", [d objectForKey:@"content"]];
                 }
                 self.nameLabel_ip5.text = [userInfo objectForKey:@"name"];
                 [self.view_ip5 removeFromSuperview];
@@ -83,7 +83,7 @@
                 NSArray *msgArray =[userInfo objectForKey:@"system_message"];
                 for (int i =0; i<[msgArray count]; i++) {
                     NSDictionary *d =[msgArray objectAtIndex:i];
-                    self.infoText_ip4.text =[self.infoText_ip4.text stringByAppendingString:[d objectForKey:@"content"]];
+                    self.infoText_ip4.text =[self.infoText_ip4.text stringByAppendingFormat:@"%@\n", [d objectForKey:@"content"]];
                 }
                 self.nameLabel_ip4.text = [userInfo objectForKey:@"name"];
                 [self.view_ip5 removeFromSuperview];
@@ -115,6 +115,7 @@
 }
 
 - (IBAction)backBtnPressed:(id)sender {
+    [Common cancelAllRequestOfAllQueue];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"POPCONTROLLER" object:nil];
 }
 
@@ -128,6 +129,7 @@
 
 #pragma mark - NetWorking Request
 - (void)loginRequest {
+    [Common cancelAllRequestOfAllQueue];
     RKNetWorkingManager *manager =[RKNetWorkingManager sharedManager];
     manager.loginDelagate =self;
     NSString *accountStr;

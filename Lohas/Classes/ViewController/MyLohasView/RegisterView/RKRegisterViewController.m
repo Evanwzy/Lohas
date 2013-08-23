@@ -90,6 +90,7 @@
 }
 
 - (IBAction)backBtnPressed:(id)sender {
+    [Common cancelAllRequestOfAllQueue];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"POPCONTROLLER" object:nil];
 }
 

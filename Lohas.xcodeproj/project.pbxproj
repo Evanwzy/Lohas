@@ -53,7 +53,9 @@
 		6900D56D17C7351400E04C0C /* logo_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D56C17C7351200E04C0C /* logo_57.png */; };
 		6900D56F17C7351900E04C0C /* logo_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D56E17C7351700E04C0C /* logo_114.png */; };
 		6900D57517C735F100E04C0C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D57417C735EF00E04C0C /* Default-568h@2x.png */; };
-		6900D57717C735F500E04C0C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D57617C735F400E04C0C /* Default@2x.png */; };
+		6900D57917C73F5700E04C0C /* detail_okBtnBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D57817C73F5600E04C0C /* detail_okBtnBg@2x.png */; };
+		6900D57E17C74B9000E04C0C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D57D17C74B8E00E04C0C /* Default@2x.png */; };
+		6900D58017C74B9800E04C0C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D57F17C74B9600E04C0C /* Default.png */; };
 		693BD59F17C1B3EE0039430B /* NIDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 693BD59E17C1B3EE0039430B /* NIDropDown.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		693BD5A717C1C0AE0039430B /* FlatDatePicker-Icon-Check.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5A117C1C0AE0039430B /* FlatDatePicker-Icon-Check.png */; };
 		693BD5A817C1C0AE0039430B /* FlatDatePicker-Icon-Check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5A217C1C0AE0039430B /* FlatDatePicker-Icon-Check@2x.png */; };
@@ -195,7 +197,9 @@
 		6900D56C17C7351200E04C0C /* logo_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_57.png; sourceTree = "<group>"; };
 		6900D56E17C7351700E04C0C /* logo_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_114.png; sourceTree = "<group>"; };
 		6900D57417C735EF00E04C0C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		6900D57617C735F400E04C0C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		6900D57817C73F5600E04C0C /* detail_okBtnBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detail_okBtnBg@2x.png"; sourceTree = "<group>"; };
+		6900D57D17C74B8E00E04C0C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		6900D57F17C74B9600E04C0C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		693BD59D17C1B3EE0039430B /* NIDropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIDropDown.h; sourceTree = "<group>"; };
 		693BD59E17C1B3EE0039430B /* NIDropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIDropDown.m; sourceTree = "<group>"; };
 		693BD5A117C1C0AE0039430B /* FlatDatePicker-Icon-Check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Check.png"; sourceTree = "<group>"; };
@@ -443,6 +447,7 @@
 		6900D54F17C7099400E04C0C /* detailImage */ = {
 			isa = PBXGroup;
 			children = (
+				6900D57817C73F5600E04C0C /* detail_okBtnBg@2x.png */,
 				6900D55017C7099400E04C0C /* detail_phone@2x.png */,
 				6900D55117C7099400E04C0C /* detail_map@2x.png */,
 				6900D55217C7099400E04C0C /* detail_line@2x.png */,
@@ -530,7 +535,8 @@
 		69452F8117BC98A0000B6674 = {
 			isa = PBXGroup;
 			children = (
-				6900D57617C735F400E04C0C /* Default@2x.png */,
+				6900D57F17C74B9600E04C0C /* Default.png */,
+				6900D57D17C74B8E00E04C0C /* Default@2x.png */,
 				6900D57417C735EF00E04C0C /* Default-568h@2x.png */,
 				6900D56E17C7351700E04C0C /* logo_114.png */,
 				6900D56C17C7351200E04C0C /* logo_57.png */,
@@ -1022,7 +1028,9 @@
 				6900D56D17C7351400E04C0C /* logo_57.png in Resources */,
 				6900D56F17C7351900E04C0C /* logo_114.png in Resources */,
 				6900D57517C735F100E04C0C /* Default-568h@2x.png in Resources */,
-				6900D57717C735F500E04C0C /* Default@2x.png in Resources */,
+				6900D57917C73F5700E04C0C /* detail_okBtnBg@2x.png in Resources */,
+				6900D57E17C74B9000E04C0C /* Default@2x.png in Resources */,
+				6900D58017C74B9800E04C0C /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

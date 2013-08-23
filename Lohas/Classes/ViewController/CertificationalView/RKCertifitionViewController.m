@@ -161,6 +161,7 @@
 
 #pragma mark - NIDrop Button Delegate
 - (void) niDropDownDelegateMethod: (NIDropDown *) sender :(NSString *)text :(int)indexPath{
+    
     if([sender isEqual:dropDown]) {
         [self.kindBtn setTitle:text forState:UIControlStateNormal];
         [self rel:sender];

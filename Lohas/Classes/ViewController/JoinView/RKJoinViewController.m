@@ -86,7 +86,7 @@
     self.titleLbl.textAlignment =UITextAlignmentCenter;
     self.titleLbl.font =[UIFont systemFontOfSize:17.0f];
     self.titleLbl.textColor =[UIColor lightGrayColor];
-    self.titleLbl.backgroundColor =[UIColor whiteColor];
+    [self.titleLbl setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"detail_titleBg@2x.png"]]];
     
     [self.viewSV setContentSize:CGSizeMake(320.0f, 1072.0f)];
     
@@ -117,6 +117,7 @@
     self.flatDatePicker.delegate = self;
     self.flatDatePicker.title = @"请选择日期";
     self.flatDatePicker.datePickerMode = FlatDatePickerModeDate;
+    self.flatDatePicker.backgroundColor =[UIColor colorWithRed:28/255 green:162/255 blue:163/255 alpha:1];
     
     [RadioButton addObserverForGroupId:@"shop kind" observer:self];
 }
@@ -444,7 +445,7 @@
     self.m_poi = [[POI alloc]initWithCoords:myLocation];
     self.m_poi.title = @"当前位置";
     
-    self.m_map.showsUserLocation =YES;
+//    self.m_map.showsUserLocation =YES;
     [self.m_map addAnnotation:_m_poi];
     
     MKCoordinateRegion theRegion = { {0.0, 0.0 }, { 0.0, 0.0 } };
@@ -525,6 +526,7 @@
 #pragma mark - Upload User Info
 
 - (void) joinLohasRequest {
+    [Common cancelAllRequestOfAllQueue];
     if (self.nameText.text.length !=0 && self.ownerText.text.length !=0 &&self.verifyText.text.length !=0 &&self.locationText.text.length !=0 &&self.addressText.text.length !=0 &&self.dateText.text.length !=0 &&self.peopleText.text.length !=0 &&self.doorImage !=nil &&self.certificateImage !=nil &&self.shopKind !=0) {
         [Common cancelAllRequestOfAllQueue];
         RKNetWorkingManager *manager =[RKNetWorkingManager sharedManager];
