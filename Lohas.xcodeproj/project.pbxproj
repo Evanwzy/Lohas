@@ -50,6 +50,10 @@
 		6900D56517C7099400E04C0C /* detail_titleBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D55817C7099400E04C0C /* detail_titleBg@2x.png */; };
 		6900D56617C7099400E04C0C /* detail_topBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D55917C7099400E04C0C /* detail_topBg@2x.png */; };
 		6900D56917C7099400E04C0C /* detail_infoBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D55C17C7099400E04C0C /* detail_infoBg@2x.png */; };
+		6900D56D17C7351400E04C0C /* logo_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D56C17C7351200E04C0C /* logo_57.png */; };
+		6900D56F17C7351900E04C0C /* logo_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D56E17C7351700E04C0C /* logo_114.png */; };
+		6900D57517C735F100E04C0C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D57417C735EF00E04C0C /* Default-568h@2x.png */; };
+		6900D57717C735F500E04C0C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6900D57617C735F400E04C0C /* Default@2x.png */; };
 		693BD59F17C1B3EE0039430B /* NIDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 693BD59E17C1B3EE0039430B /* NIDropDown.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		693BD5A717C1C0AE0039430B /* FlatDatePicker-Icon-Check.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5A117C1C0AE0039430B /* FlatDatePicker-Icon-Check.png */; };
 		693BD5A817C1C0AE0039430B /* FlatDatePicker-Icon-Check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693BD5A217C1C0AE0039430B /* FlatDatePicker-Icon-Check@2x.png */; };
@@ -78,9 +82,6 @@
 		69452F9217BC98A0000B6674 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69452F9117BC98A0000B6674 /* CoreGraphics.framework */; };
 		69452F9A17BC98A0000B6674 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69452F9917BC98A0000B6674 /* main.m */; };
 		69452F9E17BC98A0000B6674 /* RKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69452F9D17BC98A0000B6674 /* RKAppDelegate.m */; };
-		69452FA017BC98A0000B6674 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 69452F9F17BC98A0000B6674 /* Default.png */; };
-		69452FA217BC98A0000B6674 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69452FA117BC98A0000B6674 /* Default@2x.png */; };
-		69452FA417BC98A0000B6674 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69452FA317BC98A0000B6674 /* Default-568h@2x.png */; };
 		6945300317BC9961000B6674 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 69452FB017BC9961000B6674 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6945300417BC9961000B6674 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 69452FB317BC9961000B6674 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6945300517BC9961000B6674 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 69452FB517BC9961000B6674 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -191,6 +192,10 @@
 		6900D55817C7099400E04C0C /* detail_titleBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detail_titleBg@2x.png"; sourceTree = "<group>"; };
 		6900D55917C7099400E04C0C /* detail_topBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detail_topBg@2x.png"; sourceTree = "<group>"; };
 		6900D55C17C7099400E04C0C /* detail_infoBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detail_infoBg@2x.png"; sourceTree = "<group>"; };
+		6900D56C17C7351200E04C0C /* logo_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_57.png; sourceTree = "<group>"; };
+		6900D56E17C7351700E04C0C /* logo_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_114.png; sourceTree = "<group>"; };
+		6900D57417C735EF00E04C0C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		6900D57617C735F400E04C0C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		693BD59D17C1B3EE0039430B /* NIDropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIDropDown.h; sourceTree = "<group>"; };
 		693BD59E17C1B3EE0039430B /* NIDropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIDropDown.m; sourceTree = "<group>"; };
 		693BD5A117C1C0AE0039430B /* FlatDatePicker-Icon-Check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Check.png"; sourceTree = "<group>"; };
@@ -230,8 +235,6 @@
 		69452F9C17BC98A0000B6674 /* RKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RKAppDelegate.h; sourceTree = "<group>"; };
 		69452F9D17BC98A0000B6674 /* RKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKAppDelegate.m; sourceTree = "<group>"; };
 		69452F9F17BC98A0000B6674 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		69452FA117BC98A0000B6674 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		69452FA317BC98A0000B6674 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		69452FAF17BC9961000B6674 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		69452FB017BC9961000B6674 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		69452FB117BC9961000B6674 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -527,6 +530,10 @@
 		69452F8117BC98A0000B6674 = {
 			isa = PBXGroup;
 			children = (
+				6900D57617C735F400E04C0C /* Default@2x.png */,
+				6900D57417C735EF00E04C0C /* Default-568h@2x.png */,
+				6900D56E17C7351700E04C0C /* logo_114.png */,
+				6900D56C17C7351200E04C0C /* logo_57.png */,
 				69452F9317BC98A0000B6674 /* Lohas */,
 				69452F8C17BC98A0000B6674 /* Frameworks */,
 				69452F8B17BC98A0000B6674 /* Products */,
@@ -582,8 +589,6 @@
 				69452F9917BC98A0000B6674 /* main.m */,
 				69452F9B17BC98A0000B6674 /* Lohas-Prefix.pch */,
 				69452F9F17BC98A0000B6674 /* Default.png */,
-				69452FA117BC98A0000B6674 /* Default@2x.png */,
-				69452FA317BC98A0000B6674 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -948,9 +953,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69452FA017BC98A0000B6674 /* Default.png in Resources */,
-				69452FA217BC98A0000B6674 /* Default@2x.png in Resources */,
-				69452FA417BC98A0000B6674 /* Default-568h@2x.png in Resources */,
 				6945303F17BC9AFB000B6674 /* RKHomeViewController.xib in Resources */,
 				6945304917BCA6DF000B6674 /* RKCityListViewController.xib in Resources */,
 				6945305417BCB270000B6674 /* RKMyLohasViewController.xib in Resources */,
@@ -1017,6 +1019,10 @@
 				6900D56517C7099400E04C0C /* detail_titleBg@2x.png in Resources */,
 				6900D56617C7099400E04C0C /* detail_topBg@2x.png in Resources */,
 				6900D56917C7099400E04C0C /* detail_infoBg@2x.png in Resources */,
+				6900D56D17C7351400E04C0C /* logo_57.png in Resources */,
+				6900D56F17C7351900E04C0C /* logo_114.png in Resources */,
+				6900D57517C735F100E04C0C /* Default-568h@2x.png in Resources */,
+				6900D57717C735F500E04C0C /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

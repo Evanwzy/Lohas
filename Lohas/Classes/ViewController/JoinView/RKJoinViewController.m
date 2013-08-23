@@ -190,6 +190,7 @@
 }
 
 - (IBAction)GpsBtnPressed:(id)sender {
+    self.gpsBtn.userInteractionEnabled =NO;
     [Common cancelAllRequestOfAllQueue];
     if ([CLLocationManager locationServicesEnabled]) {
         locationManager =[[CLLocationManager alloc]init];
@@ -198,9 +199,10 @@
         locationManager.desiredAccuracy =kCLLocationAccuracyBestForNavigation;
         [locationManager startUpdatingLocation];
         NSLog(@"GPS开始");
-        self.gpsBtn.userInteractionEnabled =NO;
+        
     }else {
         [Common showNetWorokingAlertWithMessage:@"GPS不可用，请检查GPS状态。"];
+        self.gpsBtn.userInteractionEnabled =YES;
     }
 }
 
@@ -215,6 +217,10 @@
     [self.backBtn setHidden:NO];
     [self.backImg setHidden:NO];
     [self.okBtn setHidden:YES];
+    [self performSelector:@selector(delayM) withObject:nil afterDelay:0.9f];
+}
+
+- (void) delayM {
     self.gpsBtn.userInteractionEnabled =YES;
 }
 
@@ -432,10 +438,14 @@
 -(void)SetMapPoint:(CLLocationCoordinate2D)myLocation
 {
     //添加大头针
-    POI* m_poi = [[POI alloc]initWithCoords:myLocation];
-    m_poi.title = @"当前位置";
+    if (self.m_poi !=nil) {
+        [self.m_map removeAnnotation:self.m_poi]; 
+    }
+    self.m_poi = [[POI alloc]initWithCoords:myLocation];
+    self.m_poi.title = @"当前位置";
     
-    [self.m_map addAnnotation:m_poi];
+    self.m_map.showsUserLocation =YES;
+    [self.m_map addAnnotation:_m_poi];
     
     MKCoordinateRegion theRegion = { {0.0, 0.0 }, { 0.0, 0.0 } };
     theRegion.center=myLocation;

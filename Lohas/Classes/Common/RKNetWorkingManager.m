@@ -247,14 +247,14 @@ static RKNetWorkingManager *_networkRequestManager;
 -(void)getdetailData:(NSString *)shopID {
     [self checkQueue];
     
-    NSURL *url =[NSURL URLWithString:shopInfoUrl];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"%@/&id=%@", shopInfoUrl, shopID]];
     
-    ASIFormDataRequest *request =[ASIFormDataRequest requestWithURL:url];
-    [request addPostValue:shopID forKey:@"id"];
-    [request addPostValue:[Common getKey] forKey:@"user_key"];
+    ASIHTTPRequest *request =[ASIHTTPRequest requestWithURL:url];
+//    [request addPostValue:shopID forKey:@"id"];
+//    [request addPostValue:[Common getKey] forKey:@"user_key"];
     
     [request setDelegate:self];
-    [request setDidFinishSelector:@selector(joinLohasFinished:)];
+    [request setDidFinishSelector:@selector(getdetailDataFinished:)];
     [request setDidFailSelector:@selector(commonRequestQueryDataFailed:)];
     
     request.timeOutSeconds=10;

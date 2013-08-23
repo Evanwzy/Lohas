@@ -33,8 +33,10 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet UITextField *accountText_ip4;
 @property (weak, nonatomic) IBOutlet UITextField *pwdText_ip4;
+@property (weak, nonatomic) IBOutlet UITextView *infoText_ip4;
 @property (weak, nonatomic) IBOutlet UITextField *accountText_ip5;
 @property (weak, nonatomic) IBOutlet UITextField *pwdText_ip5;
+@property (weak, nonatomic) IBOutlet UITextView *infoText_ip5;
 
 - (IBAction)LoginBtnPressed:(id)sender;
 - (IBAction)RegisterBtnPressed:(id)sender;

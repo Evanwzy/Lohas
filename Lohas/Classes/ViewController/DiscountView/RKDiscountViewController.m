@@ -102,7 +102,7 @@
     
     RKDetailViewController *dvCtr =[[RKDetailViewController alloc]init];
     dvCtr.shopID =
-    [cellDict objectForKey:@"id"];
+    [cellDict objectForKey:@"store_id"];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"PUSHCONTROLLER" object:dvCtr];
 }
 //

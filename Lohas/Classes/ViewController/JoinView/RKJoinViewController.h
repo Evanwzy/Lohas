@@ -58,7 +58,8 @@ typedef enum {
 }
 
 @property int btnType;
-@property (nonatomic ,retain) NSDictionary *userDict;
+@property (nonatomic, retain) NSDictionary *userDict;
+@property (nonatomic, retain) POI *m_poi;
 
 @property (weak, nonatomic) IBOutlet UITextField *nameText;
 @property (weak, nonatomic) IBOutlet UITextField *ownerText;

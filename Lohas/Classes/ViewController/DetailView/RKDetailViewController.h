@@ -10,6 +10,7 @@
 
 #import "Common.h"
 #import "RKNetWorkingManager.h"
+#import "UIImageView+WebCache.h"
 
 @interface RKDetailViewController : UIViewController <RKNetWorkingManagerDetailDelegate
 >
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UILabel *addressLbl;
 @property (weak, nonatomic) IBOutlet UILabel *cellPhoneLbl;
+@property (weak, nonatomic) IBOutlet UIImageView *infoImageView;
 
 
 - (IBAction)mapBtnPressed:(id)sender;;
