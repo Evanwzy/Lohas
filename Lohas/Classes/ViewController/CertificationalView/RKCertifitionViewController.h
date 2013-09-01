@@ -49,6 +49,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *distanceBtn;
 @property (weak, nonatomic) IBOutlet UIButton *choiceBtn;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 - (IBAction)backBtnPressed:(id)sender;
 - (IBAction)distanceBtnPressed:(id)sender;
 - (IBAction)kindBtnPressed:(id)sender;
